@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "assetType": "interface-icons",
+  "approvalStatus": "approved",
+  "source": {
+    "name": "Lucide",
+    "package": "lucide-react",
+    "version": "1.27.0",
+    "registry": "https://www.npmjs.com/package/lucide-react"
+  },
+  "license": {
+    "name": "ISC",
+    "file": "../licenses/lucide-ISC.txt",
+    "note": "The bundled license also identifies Lucide icons derived from Feather and includes their MIT terms."
+  },
+  "onlyInterfaceIconSet": "Lucide",
+  "prohibitedSynthesis": true,
+  "icons": [
+    "ArrowRight",
+    "Check",
+    "ExternalLink",
+    "Search"
+  ],
+  "instructions": [
+    "Import interface icons from the pinned lucide-react package.",
+    "Do not draw or generate substitute interface icons.",
+    "Update this inventory when an approved component begins or stops using an icon.",
+    "Custom Ridgeframe identity marks are not interface icons."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "assetType": "identity-logo",
+  "approvalStatus": "approved-binaries-absent",
+  "source": {
+    "authority": "Approved Figma identity components",
+    "status": "future-authority",
+    "note": "Logo geometry, wordmark geometry, lockups, and optical spacing become authoritative only when approved Figma identity components are supplied."
+  },
+  "license": {
+    "name": "Proprietary",
+    "owner": "Ridgeframe Strategies",
+    "note": "No identity binaries are distributed by this manifest. Confirm usage rights when approved assets are supplied."
+  },
+  "prohibitedSynthesis": true,
+  "files": [],
+  "instructions": [
+    "Do not draw, trace, regenerate, normalize, or reinterpret Ridgeframe identity geometry.",
+    "Do not treat an exported SVG, PNG, PDF, or .fig file as a replacement master.",
+    "Add a file only after its Figma source and approval status are recorded."
+  ]
+}
