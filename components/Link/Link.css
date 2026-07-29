@@ -1,0 +1,92 @@
+.rf-link {
+  color: var(--rf-color-semantic-text-secondary);
+  text-decoration: underline;
+  text-decoration-thickness: var(--rf-border-width-hairline);
+  text-underline-offset: 0.15em;
+  transition: color var(--rf-motion-duration-fast) var(--rf-motion-easing-standard),
+    text-decoration-thickness var(--rf-motion-duration-fast) var(--rf-motion-easing-standard);
+}
+
+.rf-link:hover {
+  color: var(--rf-color-semantic-text-primary);
+  text-decoration-thickness: 2px;
+}
+
+.rf-link:active {
+  color: var(--rf-color-semantic-text-primary);
+}
+
+.rf-link:focus-visible {
+  outline: var(--rf-border-width-focus) solid var(--rf-color-semantic-focus-light);
+  outline-offset: var(--rf-space-1);
+}
+
+.rf-link--standalone,
+.rf-link--navigation {
+  font-family: var(--rf-font-family-utility);
+  font-size: var(--rf-type-size-ui);
+  font-weight: var(--rf-font-weight-medium);
+  line-height: var(--rf-type-line-height-ui);
+}
+
+.rf-link--standalone {
+  display: inline-flex;
+  font-weight: var(--rf-font-weight-semibold);
+  gap: var(--rf-space-1);
+}
+
+.rf-link--navigation {
+  text-decoration: none;
+}
+
+.rf-link--navigation:hover,
+.rf-link--navigation:active,
+.rf-link--navigation.rf-link--current {
+  text-decoration: underline;
+}
+
+.rf-link--current {
+  font-weight: var(--rf-font-weight-semibold);
+  text-decoration-thickness: 2px;
+}
+
+.rf-link--inverse {
+  color: var(--rf-color-semantic-text-inverse);
+}
+
+.rf-link--inverse:hover,
+.rf-link--inverse:active {
+  color: var(--rf-color-semantic-text-inverse);
+}
+
+.rf-link--inverse:focus-visible {
+  box-shadow: 0 0 0 var(--rf-space-1) var(--rf-color-semantic-focus-inverse);
+  outline: var(--rf-border-width-focus) solid var(--rf-color-semantic-focus-inverse);
+  outline-offset: var(--rf-space-1);
+}
+
+.rf-link__external-icon {
+  block-size: 1em;
+  display: inline-block;
+  inline-size: 1em;
+  margin-inline-start: var(--rf-space-1);
+  vertical-align: -0.1em;
+}
+
+.rf-link__new-context {
+  block-size: 1px;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  inline-size: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rf-link {
+    transition-duration: var(--rf-motion-duration-reduced);
+  }
+}

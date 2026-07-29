@@ -1,0 +1,17 @@
+.rf-grid {
+  display: grid;
+  gap: var(--rf-grid-gutter);
+  grid-template-columns: repeat(var(--rf-grid-column-mobile), minmax(0, 1fr));
+}
+
+@media (--rf-breakpoint-tablet) {
+  .rf-grid {
+    grid-template-columns: repeat(var(--rf-grid-column-tablet), minmax(0, 1fr));
+  }
+}
+
+@media (--rf-breakpoint-desktop) {
+  .rf-grid {
+    grid-template-columns: repeat(var(--rf-grid-column-desktop), minmax(0, 1fr));
+  }
+}

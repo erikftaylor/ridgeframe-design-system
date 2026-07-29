@@ -1,0 +1,62 @@
+.rf-section-shell {
+  background: var(--rf-color-semantic-surface-default);
+  color: var(--rf-color-semantic-text-primary);
+  padding-block: var(--rf-space-semantic-section);
+}
+
+.rf-section-shell--surface-raised {
+  background: var(--rf-color-semantic-surface-raised);
+}
+
+.rf-section-shell--surface-subtle-emphasis {
+  background: var(--rf-color-semantic-surface-subtle-emphasis);
+}
+
+.rf-section-shell--surface-inverse {
+  background: var(--rf-color-semantic-surface-inverse);
+  color: var(--rf-color-semantic-text-inverse);
+}
+
+.rf-section-shell--framed {
+  border-block: var(--rf-border-width-hairline) solid var(--rf-color-semantic-border-decorative);
+}
+
+.rf-section-shell__container,
+.rf-section-shell__container--standard,
+.rf-section-shell__container--reading,
+.rf-section-shell__container--maximum,
+.rf-section-shell__container--full-bleed {
+  inline-size: 100%;
+  margin-inline: auto;
+  padding-inline: var(--rf-space-semantic-page-gutter);
+}
+
+.rf-section-shell__container,
+.rf-section-shell__container--standard {
+  max-width: var(--rf-container-standard);
+}
+
+.rf-section-shell__container--reading {
+  max-width: var(--rf-container-reading);
+}
+
+.rf-section-shell__container--maximum {
+  max-width: var(--rf-container-maximum);
+}
+
+.rf-section-shell__container--full-bleed {
+  inline-size: 100%;
+  margin-inline: 0;
+  max-width: none;
+  padding-inline: 0;
+}
+
+.rf-section-shell__heading {
+  margin-block: 0 var(--rf-space-4);
+}
+
+@media (--rf-breakpoint-desktop) {
+  .rf-section-shell {
+    padding-block: var(--rf-space-semantic-section-wide);
+  }
+}

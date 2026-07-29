@@ -1,0 +1,18 @@
+body {
+  color: var(--rf-color-semantic-text-primary);
+  font-family: var(--rf-font-family-editorial);
+  font-size: var(--rf-type-size-body);
+  font-weight: var(--rf-font-weight-regular);
+  line-height: var(--rf-type-line-height-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--rf-font-family-display);
+  font-weight: var(--rf-font-weight-semibold);
+  line-height: var(--rf-type-line-height-tight);
+}

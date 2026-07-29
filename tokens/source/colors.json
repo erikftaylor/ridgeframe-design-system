@@ -1,0 +1,98 @@
+{
+  "color": {
+    "primitive": {
+      "brand": {
+        "slate": { "$type": "color", "$value": "#1B3A52" },
+        "teal": { "$type": "color", "$value": "#0F6E56" },
+        "rust": { "$type": "color", "$value": "#854F0B" }
+      },
+      "neutral": {
+        "white": { "$type": "color", "$value": "#FFFFFF" },
+        "off-white": { "$type": "color", "$value": "#F9F8F7" },
+        "light": { "$type": "color", "$value": "#BFBDB3" },
+        "mid": { "$type": "color", "$value": "#6B6A64" },
+        "charcoal": { "$type": "color", "$value": "#2C2C2A" }
+      },
+      "accent": {
+        "teal-100": { "$type": "color", "$value": "#9FE1CB" }
+      }
+    },
+    "semantic": {
+      "canvas": {
+        "default": {
+          "$type": "color",
+          "$value": "{color.primitive.neutral.off-white}",
+          "$extensions": {
+            "ridgeframe": {
+              "contrastPairs": [
+                { "foreground": "color.semantic.text.primary", "background": "color.semantic.canvas.default", "usage": "normal-text" },
+                { "foreground": "color.semantic.text.primary", "background": "color.semantic.surface.default", "usage": "normal-text" },
+                { "foreground": "color.semantic.text.secondary", "background": "color.semantic.canvas.default", "usage": "normal-text" },
+                { "foreground": "color.semantic.canvas.default", "background": "color.semantic.surface.inverse", "usage": "large-text" },
+                { "foreground": "color.semantic.action.primary-foreground", "background": "color.semantic.action.primary-background", "usage": "normal-text" },
+                { "foreground": "color.semantic.diagnostic.emphasis", "background": "color.semantic.canvas.default", "usage": "normal-text" },
+                { "foreground": "color.semantic.diagnostic.emphasis", "background": "color.semantic.surface.default", "usage": "normal-text" },
+                { "foreground": "color.semantic.canvas.default", "background": "color.semantic.diagnostic.emphasis", "usage": "normal-text" },
+                { "foreground": "color.semantic.action.primary-foreground", "background": "color.semantic.diagnostic.emphasis", "usage": "normal-text" },
+                { "foreground": "color.semantic.severity.critical.foreground", "background": "color.semantic.canvas.default", "usage": "normal-text" },
+                { "foreground": "color.semantic.text.inverse", "background": "color.semantic.severity.critical.foreground", "usage": "normal-text" },
+                { "foreground": "color.semantic.text.muted", "background": "color.semantic.canvas.default", "usage": "normal-text" },
+                { "foreground": "color.semantic.text.muted", "background": "color.semantic.surface.default", "usage": "normal-text" },
+                { "foreground": "color.semantic.text.primary", "background": "color.semantic.surface.subtle-emphasis", "usage": "normal-text" },
+                { "foreground": "color.semantic.text.secondary", "background": "color.semantic.surface.subtle-emphasis", "usage": "normal-text" },
+                { "foreground": "color.semantic.focus.inverse", "background": "color.semantic.focus.light", "usage": "non-text-control" }
+              ]
+            }
+          }
+        }
+      },
+      "surface": {
+        "default": { "$type": "color", "$value": "{color.primitive.neutral.white}" },
+        "raised": { "$type": "color", "$value": "{color.primitive.neutral.white}" },
+        "inverse": { "$type": "color", "$value": "{color.primitive.brand.slate}" },
+        "subtle-emphasis": { "$type": "color", "$value": "{color.primitive.accent.teal-100}" }
+      },
+      "text": {
+        "primary": { "$type": "color", "$value": "{color.primitive.neutral.charcoal}" },
+        "secondary": { "$type": "color", "$value": "{color.primitive.brand.slate}" },
+        "muted": { "$type": "color", "$value": "{color.primitive.neutral.mid}" },
+        "inverse": { "$type": "color", "$value": "{color.primitive.neutral.white}" }
+      },
+      "border": {
+        "decorative": { "$type": "color", "$value": "{color.primitive.neutral.light}" },
+        "control": { "$type": "color", "$value": "{color.primitive.neutral.mid}" },
+        "strong": { "$type": "color", "$value": "{color.primitive.neutral.charcoal}" }
+      },
+      "action": {
+        "primary-background": { "$type": "color", "$value": "{color.primitive.brand.slate}" },
+        "primary-foreground": { "$type": "color", "$value": "{color.primitive.neutral.white}" },
+        "primary-hover": { "$type": "color", "$value": "{color.primitive.brand.slate}" },
+        "primary-active": { "$type": "color", "$value": "{color.primitive.brand.slate}" }
+      },
+      "focus": {
+        "light": { "$type": "color", "$value": "{color.primitive.brand.slate}" },
+        "signal": { "$type": "color", "$value": "{color.primitive.brand.teal}" },
+        "inverse": { "$type": "color", "$value": "{color.primitive.accent.teal-100}" }
+      },
+      "diagnostic": {
+        "emphasis": { "$type": "color", "$value": "{color.primitive.brand.teal}" }
+      },
+      "severity": {
+        "critical": {
+          "foreground": { "$type": "color", "$value": "{color.primitive.brand.rust}" }
+        },
+        "high": {
+          "foreground": { "$type": "color", "$value": "{color.primitive.brand.teal}" }
+        },
+        "medium": {
+          "foreground": { "$type": "color", "$value": "{color.primitive.brand.slate}" }
+        }
+      },
+      "disabled": {
+        "foreground": { "$type": "color", "$value": "{color.primitive.neutral.mid}" },
+        "background": { "$type": "color", "$value": "{color.primitive.neutral.light}" },
+        "border": { "$type": "color", "$value": "{color.primitive.neutral.light}" }
+      }
+    }
+  }
+}

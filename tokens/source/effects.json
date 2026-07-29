@@ -1,0 +1,41 @@
+{
+  "border": {
+    "width": {
+      "hairline": { "$type": "dimension", "$value": "1px" },
+      "focus": { "$type": "dimension", "$value": "2px" }
+    }
+  },
+  "radius": {
+    "none": { "$type": "dimension", "$value": "0px" },
+    "subtle": { "$type": "dimension", "$value": "2px" },
+    "default": { "$type": "dimension", "$value": "4px" },
+    "maximum": { "$type": "dimension", "$value": "8px" }
+  },
+  "shadow": {
+    "none": { "$type": "shadow", "$value": "none" },
+    "raised": { "$type": "shadow", "$value": "0 2px 8px rgb(44 44 42 / 0.12)" }
+  },
+  "opacity": {
+    "disabled": { "$type": "number", "$value": 0.6 },
+    "subtle": { "$type": "number", "$value": 0.72 }
+  },
+  "motion": {
+    "duration": {
+      "fast": { "$type": "duration", "$value": "120ms" },
+      "default": { "$type": "duration", "$value": "180ms" },
+      "reduced": { "$type": "duration", "$value": "0ms" }
+    },
+    "easing": {
+      "standard": { "$type": "cubicBezier", "$value": "cubic-bezier(0.2, 0, 0, 1)" }
+    },
+    "preference": {
+      "reduced": { "$type": "string", "$value": "prefers-reduced-motion" }
+    }
+  },
+  "z-index": {
+    "base": { "$type": "number", "$value": 0 },
+    "raised": { "$type": "number", "$value": 10 },
+    "sticky": { "$type": "number", "$value": 20 },
+    "overlay": { "$type": "number", "$value": 30 }
+  }
+}

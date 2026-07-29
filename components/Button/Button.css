@@ -1,0 +1,176 @@
+.rf-button {
+  --rf-button-active-background: var(--rf-color-semantic-action-primary-active);
+  --rf-button-active-border: var(--rf-color-semantic-action-primary-active);
+  --rf-button-active-color: var(--rf-color-primitive-neutral-white);
+  --rf-button-background: var(--rf-color-primitive-brand-slate);
+  --rf-button-border: var(--rf-color-primitive-brand-slate);
+  --rf-button-color: var(--rf-color-primitive-neutral-white);
+  --rf-button-focus-color: var(--rf-color-semantic-focus-light);
+  --rf-button-focus-shadow: none;
+  --rf-button-hover-background: var(--rf-color-semantic-action-primary-hover);
+  --rf-button-hover-border: var(--rf-color-semantic-action-primary-hover);
+  --rf-button-hover-color: var(--rf-color-primitive-neutral-white);
+
+  align-items: center;
+  background: var(--rf-button-background);
+  border: var(--rf-border-width-hairline) solid var(--rf-button-border);
+  border-radius: var(--rf-radius-default);
+  color: var(--rf-button-color);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: var(--rf-font-family-utility);
+  font-size: var(--rf-type-size-ui);
+  font-weight: var(--rf-font-weight-semibold);
+  gap: var(--rf-space-2);
+  justify-content: center;
+  line-height: var(--rf-type-line-height-ui);
+  min-block-size: var(--rf-size-target-minimum);
+  padding: var(--rf-space-2) var(--rf-space-4);
+  position: relative;
+  transition: background-color var(--rf-motion-duration-fast) var(--rf-motion-easing-standard),
+    color var(--rf-motion-duration-fast) var(--rf-motion-easing-standard),
+    border-color var(--rf-motion-duration-fast) var(--rf-motion-easing-standard);
+}
+
+.rf-button:hover:not(:disabled) {
+  background: var(--rf-button-hover-background);
+  border-color: var(--rf-button-hover-border);
+  color: var(--rf-button-hover-color);
+}
+
+.rf-button:active:not(:disabled) {
+  background: var(--rf-button-active-background);
+  border-color: var(--rf-button-active-border);
+  color: var(--rf-button-active-color);
+}
+
+.rf-button--secondary {
+  --rf-button-active-background: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-active-border: var(--rf-color-semantic-border-strong);
+  --rf-button-active-color: var(--rf-color-primitive-brand-slate);
+  --rf-button-background: var(--rf-color-primitive-neutral-white);
+  --rf-button-color: var(--rf-color-primitive-brand-slate);
+  --rf-button-hover-background: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-hover-border: var(--rf-color-primitive-brand-slate);
+  --rf-button-hover-color: var(--rf-color-primitive-brand-slate);
+}
+
+.rf-button--tertiary {
+  --rf-button-active-background: var(--rf-color-primitive-neutral-white);
+  --rf-button-active-border: var(--rf-color-primitive-neutral-white);
+  --rf-button-active-color: var(--rf-color-primitive-brand-slate);
+  --rf-button-background: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-border: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-color: var(--rf-color-primitive-brand-slate);
+  --rf-button-hover-background: var(--rf-color-primitive-neutral-white);
+  --rf-button-hover-border: var(--rf-color-primitive-neutral-white);
+  --rf-button-hover-color: var(--rf-color-primitive-brand-slate);
+}
+
+.rf-button--surface-inverse {
+  --rf-button-focus-color: var(--rf-color-semantic-focus-inverse);
+  --rf-button-focus-shadow: 0 0 0 var(--rf-space-1) var(--rf-color-semantic-focus-inverse);
+}
+
+.rf-button--surface-inverse.rf-button--primary {
+  --rf-button-active-background: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-active-border: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-active-color: var(--rf-color-primitive-brand-slate);
+  --rf-button-background: var(--rf-color-primitive-neutral-white);
+  --rf-button-border: var(--rf-color-primitive-neutral-white);
+  --rf-button-color: var(--rf-color-primitive-brand-slate);
+  --rf-button-hover-background: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-hover-border: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-hover-color: var(--rf-color-primitive-brand-slate);
+}
+
+.rf-button--surface-inverse.rf-button--secondary {
+  --rf-button-active-background: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-active-border: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-active-color: var(--rf-color-primitive-brand-slate);
+  --rf-button-background: var(--rf-color-primitive-brand-slate);
+  --rf-button-border: var(--rf-color-primitive-neutral-white);
+  --rf-button-color: var(--rf-color-primitive-neutral-white);
+  --rf-button-hover-background: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-hover-border: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-hover-color: var(--rf-color-primitive-brand-slate);
+}
+
+.rf-button--surface-inverse.rf-button--tertiary {
+  --rf-button-active-background: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-active-border: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-active-color: var(--rf-color-primitive-brand-slate);
+  --rf-button-background: var(--rf-color-primitive-brand-slate);
+  --rf-button-border: var(--rf-color-primitive-brand-slate);
+  --rf-button-color: var(--rf-color-primitive-neutral-white);
+  --rf-button-hover-background: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-hover-border: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-hover-color: var(--rf-color-primitive-brand-slate);
+}
+
+.rf-button:focus-visible {
+  box-shadow: var(--rf-button-focus-shadow);
+  outline: var(--rf-border-width-focus) solid var(--rf-button-focus-color);
+  outline-offset: var(--rf-space-1);
+}
+
+.rf-button:disabled {
+  cursor: not-allowed;
+  opacity: var(--rf-opacity-disabled);
+}
+
+.rf-button__icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.rf-button__icon > svg {
+  block-size: var(--rf-type-size-ui);
+  inline-size: var(--rf-type-size-ui);
+}
+
+.rf-button__label--loading {
+  color: transparent;
+}
+
+.rf-button--loading .rf-button__icon {
+  visibility: hidden;
+}
+
+.rf-button__loader {
+  animation: rf-button-spin var(--rf-motion-duration-default) linear infinite;
+  block-size: var(--rf-type-size-ui);
+  border: var(--rf-border-width-hairline) solid currentColor;
+  border-inline-end-color: transparent;
+  border-radius: 50%;
+  inline-size: var(--rf-type-size-ui);
+  inset: 50% auto auto 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.rf-button__status {
+  block-size: 1px;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  inline-size: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+}
+
+@keyframes rf-button-spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rf-button,
+  .rf-button__loader {
+    animation-duration: var(--rf-motion-duration-reduced);
+    transition-duration: var(--rf-motion-duration-reduced);
+  }
+}
