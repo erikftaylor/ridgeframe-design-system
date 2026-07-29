@@ -66,6 +66,8 @@ Version `0.2.0` defers:
 
 The end-state public component contract remains exactly eight primitives. The split prevents website concerns from blocking the first usable design-system release when no production website exists.
 
+**Decision status:** Approved by Erik on 2026-07-28.
+
 Version `0.1.0` excludes:
 
 - A complete marketing website
@@ -626,4 +628,3 @@ The repository is ready for `v0.2.0` when:
 ## Open Questions
 
 1. **Upstream document locations — Erik:** Record the canonical paths or URLs and approved versions of `00 – Strategic Foundation` and `01 – Website Specification` before implementation begins.
-2. **Release split ratification — Erik and Chris:** Approve `0.1.0` as tokens, four primitives, three evidence compositions, gallery, and CI, with the remaining website concerns deferred to `0.2.0`.
