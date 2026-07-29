@@ -63,12 +63,6 @@
           "foreground": { "$type": "color", "$value": "{color.primitive.brand.slate}" }
         }
       },
-      "status": {
-        "success": { "$type": "color", "$value": "{color.primitive.brand.teal}" },
-        "warning": { "$type": "color", "$value": "{color.primitive.brand.rust}" },
-        "error": { "$type": "color", "$value": "{color.primitive.brand.rust}" },
-        "information": { "$type": "color", "$value": "{color.primitive.brand.slate}" }
-      },
       "disabled": {
         "foreground": { "$type": "color", "$value": "{color.primitive.neutral.mid}" },
         "background": { "$type": "color", "$value": "{color.primitive.neutral.light}" },

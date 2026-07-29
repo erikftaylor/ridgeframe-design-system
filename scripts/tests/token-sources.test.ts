@@ -40,18 +40,46 @@ const leaves = (group: TokenGroup): Token[] =>
     '$value' in candidate ? [candidate] : leaves(candidate),
   );
 
+const leafEntries = (group: TokenGroup, prefix = ''): Array<[string, Token]> =>
+  Object.entries(group).flatMap(([name, candidate]) => {
+    const path = prefix ? `${prefix}.${name}` : name;
+    return '$value' in candidate ? [[path, candidate]] : leafEntries(candidate, path);
+  });
+
 describe('Ridgeframe source tokens', () => {
   it('defines only the approved primitive palette values', () => {
     const colors = source('colors');
 
-    expect(token(colors, 'color.primitive.brand.slate').$value).toBe('#1B3A52');
-    expect(token(colors, 'color.primitive.brand.teal').$value).toBe('#0F6E56');
-    expect(token(colors, 'color.primitive.brand.rust').$value).toBe('#854F0B');
-    expect(token(colors, 'color.primitive.neutral.off-white').$value).toBe('#F9F8F7');
-    expect(token(colors, 'color.primitive.neutral.light').$value).toBe('#BFBDB3');
-    expect(token(colors, 'color.primitive.neutral.mid').$value).toBe('#6B6A64');
-    expect(token(colors, 'color.primitive.neutral.charcoal').$value).toBe('#2C2C2A');
-    expect(token(colors, 'color.primitive.accent.teal-100').$value).toBe('#9FE1CB');
+    expect(Object.fromEntries(
+      leafEntries(colors.color as TokenGroup, 'color')
+        .filter(([path]) => path.startsWith('color.primitive.'))
+        .map(([path, { $value }]) => [path, $value]),
+    )).toEqual({
+      'color.primitive.brand.slate': '#1B3A52',
+      'color.primitive.brand.teal': '#0F6E56',
+      'color.primitive.brand.rust': '#854F0B',
+      'color.primitive.neutral.white': '#FFFFFF',
+      'color.primitive.neutral.off-white': '#F9F8F7',
+      'color.primitive.neutral.light': '#BFBDB3',
+      'color.primitive.neutral.mid': '#6B6A64',
+      'color.primitive.neutral.charcoal': '#2C2C2A',
+      'color.primitive.accent.teal-100': '#9FE1CB',
+    });
+  });
+
+  it('references pure white only from admitted semantic contexts', () => {
+    const colors = source('colors');
+
+    expect(
+      leafEntries(colors.color as TokenGroup, 'color')
+        .filter(([, { $value }]) => $value === alias('color.primitive.neutral.white'))
+        .map(([path]) => path),
+    ).toEqual([
+      'color.semantic.surface.default',
+      'color.semantic.surface.raised',
+      'color.semantic.text.inverse',
+      'color.semantic.action.primary-foreground',
+    ]);
   });
 
   it('backs semantic color roles with primitive aliases', () => {
@@ -71,6 +99,12 @@ describe('Ridgeframe source tokens', () => {
     expect(token(colors, 'color.semantic.severity.critical.foreground').$value).toBe(alias('color.primitive.brand.rust'));
     expect(token(colors, 'color.semantic.severity.high.foreground').$value).toBe(alias('color.primitive.brand.teal'));
     expect(token(colors, 'color.semantic.severity.medium.foreground').$value).toBe(alias('color.primitive.brand.slate'));
+  });
+
+  it('does not define unsupported general-purpose status aliases', () => {
+    const colors = source('colors');
+
+    expect(colors.color as TokenGroup).not.toHaveProperty('semantic.status');
   });
 
   it('assigns runtime type roles without shipping Jost', () => {
