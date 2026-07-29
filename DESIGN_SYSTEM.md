@@ -1,24 +1,51 @@
 # Ridgeframe Design System
 
+**Release:** `v0.1.0` — Unreleased
+
+This document is the single machine-facing Ridgeframe design-system entry point. It is deliberately self-contained: when repository ingestion is unavailable, supply this file alone. Repository `/design-sync` remains preferred because it also exposes implemented component behavior and validation.
+
 ## 1. Brand and audience
 
 Ridgeframe Strategies is a senior, diagnosis-first product experience and growth consultancy for established, owner-led businesses. Its promise is **clarity on what to fix and fund**. Build for leaders who need credible evidence, practical priorities, and calm senior judgment—not agency spectacle, startup optimism, or a generic software interface.
 
 ## 2. Authority boundaries
 
-The current authorities are [Ridgeframe Strategies — Strategic Foundation](https://docs.google.com/document/d/169AxuBLFfFxSYzQkUmwacrtp9UCC0UquwIMkfM8j4hM/edit) for positioning, audience, outcomes, roles, and strategic decisions, and [Ridgeframe Strategies — Website Status](https://docs.google.com/document/d/1uxfGCAhgi9ss-2J4Dq-GJhy-3np1KzFGKVNpCiQwspE/edit) for website readiness. `tokens/source/*.json` is authoritative for token values. Approved Figma identity components govern logo geometry, wordmark geometry, lockups, and optical spacing when they are supplied.
+Apply the highest relevant authority in this order:
+
+1. [Ridgeframe Strategies — Strategic Foundation](https://docs.google.com/document/d/169AxuBLFfFxSYzQkUmwacrtp9UCC0UquwIMkfM8j4hM/edit) governs current positioning, audience, outcomes, roles, and strategic decisions.
+2. [Ridgeframe Strategies — Website Status](https://docs.google.com/document/d/1uxfGCAhgi9ss-2J4Dq-GJhy-3np1KzFGKVNpCiQwspE/edit) governs website readiness; it records that no Ridgeframe sitemap or final website copy is approved.
+3. Approved Figma identity components govern logo geometry, wordmark geometry, lockups, and optical spacing when supplied. No approved logo binary or native Figma library ships in `v0.1.0`.
+4. `tokens/source/*.json` governs token values; this document governs their usage, semantic intent, and prohibitions; React source governs implemented component properties, DOM semantics, and accessibility behavior.
+5. Generated files are derived representations only. Examples demonstrate compositions and introduce neither tokens nor public primitives. Exported SVG, PNG, PDF, and `.fig` files are distribution artifacts, not replacement masters.
 
 The Convergence text files [00 - Strategic Foundation](https://drive.google.com/file/d/1OC2dkPvdfaind0Rg-mGKFfDRCn6totFR/view) (`v2.3`) and [01 - Website Specification](https://drive.google.com/file/d/1xO55N0pQmsT1N0iHA43gqHL66mcti2BT/view) (`v2.5`) are historical only. They may explain provenance for a ratified decision, but cannot define current positioning, service tiers, site structure, copy, evidence requirements, or component scope.
 
-This file is the sole root machine-facing policy document. Generated files are derived representations; React source defines implemented behavior; examples demonstrate compositions and introduce neither tokens nor public primitives.
+An asset is not approved merely because it exists. Its source and approval status must be recorded in `assets/README.md` and the appropriate manifest; absent identity artwork must never be synthesized, traced, normalized, or reinterpreted.
 
 ## 3. Architectural Editorial Modernism
 
 Use Architectural Editorial Modernism: Swiss grid discipline, calm authority, contemporary editorial typography, monochrome restraint, architectural framing, and functional teal signals. Favor structure, hairline rules, precise spacing, and quiet evidence. Avoid literal newspaper styling, dark technical dashboards, soft lifestyle minimalism, generic SaaS polish, high-energy agency conventions, Colorado or mountain clichés, ornamental texture, gradients, glass, glow, and exaggerated rounding.
 
+`v0.1.0` includes tokens, layout foundations, Button, Link, Card, SectionShell, three evidence compositions, and a state-complete gallery. FormControl, Disclosure, Header, Footer, link and structure checks, and any approved homepage composition are deferred to `v0.2.0`. Do not infer those deferred interfaces from this release.
+
 ## 4. Token rules and generated snapshot
 
 Use primitive tokens for raw values and semantic tokens for purpose. Do not introduce a color, type size, spacing value, radius, shadow, breakpoint, or z-index outside the token source when an existing token fits. Reference CSS through generated custom properties and TypeScript through the generated `tokens` export. Never edit generated output; change `tokens/source/*.json`, then run `npm run generate:tokens` and `npm run check:generated`.
+
+The eight approved Ridgeframe primitive colors are:
+
+| Approved token | Value | Primary role |
+| --- | --- | --- |
+| `brand/slate` | `#1B3A52` | Structure, inverse surfaces, ordinary interaction |
+| `brand/teal` | `#0F6E56` | Findings and priority signals |
+| `brand/rust` | `#854F0B` | Critical severity and admitted evidence roles |
+| `neutral/off-white` | `#F9F8F7` | Canvas |
+| `neutral/light` | `#BFBDB3` | Decorative dividers only |
+| `neutral/mid` | `#6B6A64` | Muted text and control borders |
+| `neutral/charcoal` | `#2C2C2A` | Primary text and strong structure |
+| `accent/teal-100` | `#9FE1CB` | Subtle fills and the inverse focus halo |
+
+White is an added accessibility primitive for raised surfaces and inverse text; it is not a ninth approved brand color. Off-white, white, charcoal, and neutrals carry most of the interface. Slate or charcoal carries ordinary actions. Teal is limited to diagnostic emphasis, priority, and High severity; no viewport may contain more than three persistent teal signal elements. Rust must not compete with teal. Teal-100 is fill-only and never a divider or standalone edge. Large teal or rust decorative fields are prohibited.
 
 The table below is generated from the same in-memory token graph as `tokens/generated/tokens.css` and `tokens/generated/tokens.ts`. Preserve these exact guarded markers; the generator may replace only the content between them.
 
