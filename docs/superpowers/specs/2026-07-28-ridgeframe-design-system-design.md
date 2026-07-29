@@ -434,7 +434,7 @@ The following WCAG 2.2 criteria are explicit release requirements:
 
 Automated accessibility checks supplement but do not replace manual keyboard, screen-reader, and visual review.
 
-The firm's audit framework and current client-facing materials cite WCAG 2.1 AA while this repository targets WCAG 2.2 AA. Erik and Chris must reconcile that wording across all materials before this system is used in client work.
+**Decision status:** Approved by Erik on 2026-07-28. WCAG 2.2 AA is the unified Ridgeframe standard. Existing audit-framework and client-facing references to WCAG 2.1 AA must be updated before those materials are reused.
 
 ## 11. Layout Foundations
 
@@ -625,6 +625,5 @@ The repository is ready for `v0.2.0` when:
 
 ## Open Questions
 
-1. **Accessibility standard reconciliation — Erik and Chris:** Decide whether the audit framework and client-facing materials will be updated from WCAG 2.1 AA to WCAG 2.2 AA. Complete the cross-material update before client use.
-2. **Upstream document locations — Erik:** Record the canonical paths or URLs and approved versions of `00 – Strategic Foundation` and `01 – Website Specification` before implementation begins.
-3. **Release split ratification — Erik and Chris:** Approve `0.1.0` as tokens, four primitives, three evidence compositions, gallery, and CI, with the remaining website concerns deferred to `0.2.0`.
+1. **Upstream document locations — Erik:** Record the canonical paths or URLs and approved versions of `00 – Strategic Foundation` and `01 – Website Specification` before implementation begins.
+2. **Release split ratification — Erik and Chris:** Approve `0.1.0` as tokens, four primitives, three evidence compositions, gallery, and CI, with the remaining website concerns deferred to `0.2.0`.
