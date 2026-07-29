@@ -4,3 +4,5 @@ export { Link } from './Link';
 export type { LinkProps } from './Link';
 export { Card } from './Card';
 export type { CardProps } from './Card';
+export { SectionShell } from './SectionShell';
+export type { SectionShellProps } from './SectionShell';
