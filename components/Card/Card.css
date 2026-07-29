@@ -1,6 +1,5 @@
 .rf-card {
   background: var(--rf-color-semantic-surface-default);
-  border: var(--rf-border-width-hairline) solid transparent;
   border-radius: var(--rf-radius-default);
   box-shadow: var(--rf-shadow-none);
   color: var(--rf-color-semantic-text-primary);
@@ -38,11 +37,11 @@
 }
 
 .rf-card--border-structural {
-  border-color: var(--rf-color-semantic-border-decorative);
+  border: var(--rf-border-width-hairline) solid var(--rf-color-semantic-border-decorative);
 }
 
 .rf-card--border-control {
-  border-color: var(--rf-color-semantic-border-control);
+  border: var(--rf-border-width-hairline) solid var(--rf-color-semantic-border-control);
 }
 
 .rf-card--interactive:hover {
