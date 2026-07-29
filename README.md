@@ -43,7 +43,11 @@ This checks generated files, admitted contrast pairs, unit and accessibility tes
 
 ## Release and Claude Design sync
 
-Keep the changelog entry marked **Unreleased** until verification and pull-request review are complete. Then create and push the approved semantic version tag:
+Keep the changelog entry marked **Unreleased** until verification and pull-request review are complete. After both are complete:
+
+1. Change `## v0.1.0 — Unreleased` to `## v0.1.0 — YYYY-MM-DD`, using the actual release date.
+2. Commit the dated changelog before creating the tag so the tag points at the final release record.
+3. Create and push the approved semantic version tag:
 
 ```sh
 git tag -a v0.1.0 -m "Ridgeframe Design System v0.1.0"

@@ -193,20 +193,33 @@ The gallery may compose these examples from the four primitives, tokens, and lay
 
 Severity labels remain present in text and reading order; color is supplementary.
 
-## 9. Accessibility and admitted contrast pairs
+## 9. Gallery state, surface, and responsive contract
+
+The gallery is state-complete only when it demonstrates this contract without inventing unsupported component properties:
+
+- Show default for every public primitive; hover, focus-visible, and active or pressed for interactive behavior; current or selected where the primitive exposes that concept; and loading and disabled for Button. Card demonstrates its interactive hover treatment. SectionShell does not simulate interaction states.
+- Demonstrate Button on light and inverse surfaces. Demonstrate Link variants in supported light, subtle-emphasis, and inverse contexts. Demonstrate Card and SectionShell on default, raised, subtle-emphasis, and inverse surfaces. Show every evidence composition on default, subtle-emphasis, and inverse surfaces.
+- Review each composition at Mobile: `0–767px`, Tablet: `768–1023px`, Desktop: `1024–1439px`, and Wide: `1440px` and above. Reflow must preserve source order, labels, text equivalents, and a visible linear Priority Map fallback without horizontal page scrolling.
+- Under `prefers-reduced-motion: reduce`, transitions and the loading spinner resolve to the zero-duration token while the loading status remains available to assistive technology.
+
+## 10. Accessibility and admitted contrast pairs
 
 Target WCAG 2.2 AA: normal text meets `4.5:1`; large text and meaningful non-text controls meet `3:1`; focused content remains unobscured; native semantics precede ARIA; heading hierarchy is logical; and interactive targets use the `24px` minimum token unless a WCAG exception applies. Provide programmatic labels, descriptions, and errors; do not use color alone; respect reduced motion; and provide a non-drag alternative for any future dragging interaction.
 
+Informative images require concise alternative text that communicates purpose in context; decorative images use empty alternative text. Annotated Screen must keep numbered text equivalents and its caption available independently of the image. Repeated help or contact mechanisms follow **Consistent Help** by appearing in the same relative order. **Redundant Entry** requires previously supplied information in the same process to be auto-populated or selectable unless re-entry is essential. Accessible authentication is not applicable to `v0.1.0` or `v0.2.0` because authentication is outside scope; reassess before adding it.
+
+Automation supplements but does not replace manual keyboard, screen-reader, and visual review. Manual review must confirm source-order keyboard navigation, visible and unobscured focus, announced names and states, image alternatives, responsive reflow, and meaning that remains available without color or positioning.
+
 Only these foreground/background pairs are admitted until contrast validation says otherwise: charcoal/off-white, charcoal/white, slate/off-white, off-white/slate, white/slate, teal/off-white, teal/white, off-white/teal, white/teal, rust/off-white, white/rust, mid/off-white, mid/white, charcoal/teal-100, slate/teal-100, and teal-100/slate. Teal/slate, light/off-white, teal/teal-100, and teal-100/off-white are known failures and prohibited. The explicit semantic registry in `tokens/source/colors.json` is the machine-enforced admission set: run `npm run check:contrast` after any relevant source-token change. It validates normal text at `4.5:1`, large text at `3:1`, and meaningful non-text controls at `3:1`; an undeclared pair fails closed even if its calculated ratio would otherwise pass. Use `color.focus.light` on light surfaces; reserve `color.focus.signal` for diagnostic and priority controls on light surfaces; render `color.focus.inverse` as a filled halo on slate.
 
-## 10. Content guidance
+## 11. Content guidance
 
 Write with clarity, experience, calm candor, practical evidence, approachability, and decisive restraint. State the problem, evidence, impact, and recommendation plainly. Avoid agency jargon, startup language, empty superlatives, vague transformation claims, unsupported revenue promises, clever but meaningless headlines, excessive innovation language, long component copy, and Lorem ipsum.
 
-## 11. Prohibitions and website gate
+## 12. Prohibitions and website gate
 
 Do not create a homepage, website templates, marketing pages, dashboard, full audit UI, speculative navigation, authentication, ecommerce, a Figma plugin, an empty `.fig` file, recreated logo assets, or custom interface icons. The Ridgeframe homepage is deferred to `v0.2.0`. Homepage work may begin only after the current Ridgeframe website specification, sitemap, and content direction are approved and linked by the current website authority; the historical eleven-section Convergence outline does not clear this gate.
 
-## 12. Claude Design `/design-sync` use
+## 13. Claude Design `/design-sync` use
 
 Use repository sync as the authoritative Claude Design ingestion path: open this package with Claude Code `2.1.181` or later, run `/design-sync`, and publish the resulting system. If a single file must be supplied, use this file because it carries the complete policy and token snapshot, while recognizing that it cannot replace component validation. `/design-sync` does not watch the repository: rerun it after each token or component change intended for Claude Design and from every tagged release checkout.

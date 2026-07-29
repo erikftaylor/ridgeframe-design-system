@@ -30,6 +30,13 @@ describe('repository documentation contract', () => {
     expect(readme).toMatch(/tagged checkout/i);
     expect(readme).toContain('/design-sync');
     expect(readme).toMatch(/does not watch/i);
+
+    const dateRelease = readme.indexOf('Change `## v0.1.0 — Unreleased` to `## v0.1.0 — YYYY-MM-DD`');
+    const commitRelease = readme.indexOf('Commit the dated changelog before creating the tag');
+    const createTag = readme.indexOf('git tag -a v0.1.0');
+    expect(dateRelease).toBeGreaterThan(-1);
+    expect(commitRelease).toBeGreaterThan(dateRelease);
+    expect(createTag).toBeGreaterThan(commitRelease);
   });
 
   it('makes DESIGN_SYSTEM.md complete enough for single-file retrieval', () => {
@@ -74,6 +81,36 @@ describe('repository documentation contract', () => {
     expect(designSystem).toMatch(/non-drag alternative/i);
     expect(designSystem).toMatch(/homepage[\s\S]*deferred to `v0\.2\.0`/i);
     expect(designSystem).toMatch(/homepage work may begin only after[\s\S]*website specification[\s\S]*sitemap[\s\S]*content direction/i);
+  });
+
+  it('defines the complete gallery and manual accessibility review contract', () => {
+    const designSystem = readRootDocument('DESIGN_SYSTEM.md');
+
+    for (const state of [
+      'default',
+      'hover',
+      'focus-visible',
+      'active or pressed',
+      'current or selected',
+      'loading',
+      'disabled',
+    ]) {
+      expect(designSystem).toMatch(new RegExp(`\\b${state}\\b`, 'i'));
+    }
+
+    expect(designSystem).toMatch(/Button[\s\S]*light and inverse surfaces/i);
+    expect(designSystem).toMatch(/Card and SectionShell[\s\S]*default, raised, subtle-emphasis, and inverse surfaces/i);
+    expect(designSystem).toContain('Mobile: `0–767px`');
+    expect(designSystem).toContain('Tablet: `768–1023px`');
+    expect(designSystem).toContain('Desktop: `1024–1439px`');
+    expect(designSystem).toContain('Wide: `1440px` and above');
+    expect(designSystem).toMatch(/prefers-reduced-motion:[\s\S]*zero-duration token/i);
+
+    expect(designSystem).toMatch(/alternative text/i);
+    expect(designSystem).toContain('Consistent Help');
+    expect(designSystem).toContain('Redundant Entry');
+    expect(designSystem).toMatch(/authentication[\s\S]*not applicable/i);
+    expect(designSystem).toMatch(/automation supplements but does not replace manual keyboard, screen-reader, and visual review/i);
   });
 
   it('keeps v0.1.0 unreleased and records the brand authority transition', () => {
