@@ -19,7 +19,32 @@
     },
     "semantic": {
       "canvas": {
-        "default": { "$type": "color", "$value": "{color.primitive.neutral.off-white}" }
+        "default": {
+          "$type": "color",
+          "$value": "{color.primitive.neutral.off-white}",
+          "$extensions": {
+            "ridgeframe": {
+              "contrastPairs": [
+                { "foreground": "color.semantic.text.primary", "background": "color.semantic.canvas.default", "usage": "normal-text" },
+                { "foreground": "color.semantic.text.primary", "background": "color.semantic.surface.default", "usage": "normal-text" },
+                { "foreground": "color.semantic.text.secondary", "background": "color.semantic.canvas.default", "usage": "normal-text" },
+                { "foreground": "color.semantic.canvas.default", "background": "color.semantic.surface.inverse", "usage": "large-text" },
+                { "foreground": "color.semantic.action.primary-foreground", "background": "color.semantic.action.primary-background", "usage": "normal-text" },
+                { "foreground": "color.semantic.diagnostic.emphasis", "background": "color.semantic.canvas.default", "usage": "normal-text" },
+                { "foreground": "color.semantic.diagnostic.emphasis", "background": "color.semantic.surface.default", "usage": "normal-text" },
+                { "foreground": "color.semantic.canvas.default", "background": "color.semantic.diagnostic.emphasis", "usage": "normal-text" },
+                { "foreground": "color.semantic.action.primary-foreground", "background": "color.semantic.diagnostic.emphasis", "usage": "normal-text" },
+                { "foreground": "color.semantic.severity.critical.foreground", "background": "color.semantic.canvas.default", "usage": "normal-text" },
+                { "foreground": "color.semantic.text.inverse", "background": "color.semantic.severity.critical.foreground", "usage": "normal-text" },
+                { "foreground": "color.semantic.text.muted", "background": "color.semantic.canvas.default", "usage": "normal-text" },
+                { "foreground": "color.semantic.text.muted", "background": "color.semantic.surface.default", "usage": "normal-text" },
+                { "foreground": "color.semantic.text.primary", "background": "color.semantic.surface.subtle-emphasis", "usage": "normal-text" },
+                { "foreground": "color.semantic.text.secondary", "background": "color.semantic.surface.subtle-emphasis", "usage": "normal-text" },
+                { "foreground": "color.semantic.focus.inverse", "background": "color.semantic.focus.light", "usage": "non-text-control" }
+              ]
+            }
+          }
+        }
       },
       "surface": {
         "default": { "$type": "color", "$value": "{color.primitive.neutral.white}" },
