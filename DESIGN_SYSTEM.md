@@ -177,7 +177,7 @@ Start mobile-first with one column, then use eight columns at tablet and twelve 
 
 `v0.1.0` exposes exactly four public primitives:
 
-- **Button:** primary, secondary, and tertiary actions with native button semantics, visible states, optional Lucide icons, and a dimension-preserving loading state.
+- **Button:** primary, secondary, and tertiary actions with native button semantics, visible states, optional Lucide icons, and a dimension-preserving loading state. Set `surface="inverse"` when a Button sits on slate so its default, hover, active, focus-visible, loading, and disabled presentations use the verified inverse contract; the default `surface="light"` contract is for white and off-white contexts.
 - **Link:** inline, standalone, navigation, and inverse anchors that preserve native behavior and indicate external new-context links accessibly.
 - **Card:** structural surfaces, control-grade borders, spacing, and optional interactive behavior.
 - **SectionShell:** page-width containment, vertical rhythm, framing, surface tone, and heading relationships.

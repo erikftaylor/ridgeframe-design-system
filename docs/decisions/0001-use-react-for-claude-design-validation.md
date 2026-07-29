@@ -1,6 +1,6 @@
 # ADR-0001: Use React for Claude Design Component Validation
 
-**Status:** Proposed for ratification with the repository design specification
+**Status:** Accepted
 
 **Date:** 2026-07-28
 

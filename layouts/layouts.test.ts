@@ -60,10 +60,24 @@ describe('layout foundations', () => {
     expect(containers).toMatch(/\.rf-container--reading[\s\S]*max-width:\s*var\(--rf-container-reading\)/);
     expect(containers).toMatch(/\.rf-container--maximum[\s\S]*max-width:\s*var\(--rf-container-maximum\)/);
     expect(containers).toMatch(
-      /\.rf-container--full-bleed\s*\{[\s\S]*inline-size:\s*calc\(100% \+ \(var\(--rf-space-semantic-page-gutter\) \* 2\)\)[\s\S]*margin-inline:\s*calc\(var\(--rf-space-semantic-page-gutter\) \* -1\)[\s\S]*max-width:\s*none/,
+      /\.rf-container--full-bleed\s*\{[\s\S]*inline-size:\s*auto;[\s\S]*margin-inline:\s*calc\(50% - 50vi\);[\s\S]*max-width:\s*none;[\s\S]*padding-inline:\s*0/,
     );
+    expect(containers).not.toContain('inline-size: calc(100% +');
     expect(containers).toContain('padding-inline: var(--rf-space-semantic-page-gutter);');
   });
+
+  it.each([375, 500, 834, 1280])(
+    'resolves the centered full-bleed breakout to the %ipx viewport without overflow',
+    (viewportWidth) => {
+      const gutter = viewportWidth < 768 ? 16 : viewportWidth < 1024 ? 24 : 32;
+      const containingWidth = viewportWidth - gutter * 2;
+      const inlineMargin = containingWidth / 2 - viewportWidth / 2;
+      const autoInlineSize = containingWidth - inlineMargin * 2;
+
+      expect(inlineMargin).toBe(-gutter);
+      expect(autoInlineSize).toBe(viewportWidth);
+    },
+  );
 
   it('uses the approved readable EB Garamond body baseline', () => {
     // Replacing either token would lower body readability or discard the editorial body-face contract.

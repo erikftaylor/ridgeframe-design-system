@@ -22,6 +22,7 @@ type ButtonIconProps = ButtonWithoutIcon | ButtonWithLeadingIcon | ButtonWithTra
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
   ButtonIconProps & {
     loading?: boolean;
+    surface?: 'light' | 'inverse';
     variant?: 'primary' | 'secondary' | 'tertiary';
   };
 
@@ -34,6 +35,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
     icon,
     iconPosition = 'leading',
     loading = false,
+    surface = 'light',
     type = 'button',
     variant = 'primary',
     ...buttonProps
@@ -43,6 +45,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
   const classes = [
     'rf-button',
     `rf-button--${variant}`,
+    `rf-button--surface-${surface}`,
     loading ? 'rf-button--loading' : undefined,
     className,
   ]

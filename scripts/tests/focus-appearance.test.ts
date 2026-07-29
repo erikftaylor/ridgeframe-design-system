@@ -39,16 +39,25 @@ describe('WCAG 2.2 focus appearance', () => {
     const linkCss = repositoryFile('components/Link/Link.css');
     const galleryCss = repositoryFile('examples/component-gallery/src/gallery.css');
 
-    expect(ruleFor(buttonCss, '.rf-button:focus-visible')).toContain(focusDeclaration);
+    expect(ruleFor(buttonCss, '.rf-button')).toContain(
+      '--rf-button-focus-color: var(--rf-color-semantic-focus-light);',
+    );
+    expect(ruleFor(buttonCss, '.rf-button--surface-inverse')).toContain(
+      '--rf-button-focus-color: var(--rf-color-semantic-focus-inverse);',
+    );
+    expect(ruleFor(buttonCss, '.rf-button:focus-visible')).toContain(
+      'outline: var(--rf-border-width-focus) solid var(--rf-button-focus-color);',
+    );
     expect(ruleFor(linkCss, '.rf-link:focus-visible')).toContain(focusDeclaration);
     expect(ruleFor(linkCss, '.rf-link--inverse:focus-visible')).toContain(
       inverseFocusDeclaration,
     );
     expect(ruleFor(galleryCss, '.gallery-force-button-focus.rf-button')).toContain(
-      focusDeclaration,
+      'outline: var(--rf-border-width-focus) solid var(--rf-button-focus-color);',
     );
     expect(ruleFor(galleryCss, '.gallery-force-link-focus')).toContain(focusDeclaration);
-    expect(ruleFor(galleryCss, '.gallery-button-surface--inverse .gallery-force-button-focus'))
-      .toContain('outline-color: var(--rf-color-semantic-focus-inverse);');
+    expect(ruleFor(galleryCss, '.gallery-force-button-focus.rf-button')).toContain(
+      'box-shadow: var(--rf-button-focus-shadow);',
+    );
   });
 });

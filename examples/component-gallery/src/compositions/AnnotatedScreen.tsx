@@ -7,8 +7,14 @@ export type ScreenAnnotation = {
   title: string;
 };
 
+export type ScreenAnnotations = readonly [
+  ScreenAnnotation,
+  ScreenAnnotation?,
+  ScreenAnnotation?,
+];
+
 export type AnnotatedScreenProps = {
-  annotations: readonly ScreenAnnotation[];
+  annotations: ScreenAnnotations;
   caption: string;
   surface?: CardProps['surface'];
   title: string;
@@ -24,6 +30,11 @@ export function AnnotatedScreen({
 }: AnnotatedScreenProps) {
   const captionId = useId();
   const TitleHeading = titleLevel === 4 ? 'h4' : 'h3';
+  const annotationCount = (annotations as readonly ScreenAnnotation[]).length;
+
+  if (annotationCount < 1 || annotationCount > 3) {
+    throw new Error('AnnotatedScreen supports between one and three annotations.');
+  }
 
   return (
     <Card

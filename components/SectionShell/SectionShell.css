@@ -45,9 +45,10 @@
 }
 
 .rf-section-shell__container--full-bleed {
-  inline-size: calc(100% + (var(--rf-space-semantic-page-gutter) * 2));
-  margin-inline: calc(var(--rf-space-semantic-page-gutter) * -1);
+  inline-size: auto;
+  margin-inline: calc(50% - 50vi);
   max-width: none;
+  padding-inline: 0;
 }
 
 .rf-section-shell__heading {

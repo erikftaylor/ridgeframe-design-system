@@ -1,9 +1,21 @@
 .rf-button {
+  --rf-button-active-background: var(--rf-color-semantic-action-primary-active);
+  --rf-button-active-border: var(--rf-color-semantic-action-primary-active);
+  --rf-button-active-color: var(--rf-color-primitive-neutral-white);
+  --rf-button-background: var(--rf-color-primitive-brand-slate);
+  --rf-button-border: var(--rf-color-primitive-brand-slate);
+  --rf-button-color: var(--rf-color-primitive-neutral-white);
+  --rf-button-focus-color: var(--rf-color-semantic-focus-light);
+  --rf-button-focus-shadow: none;
+  --rf-button-hover-background: var(--rf-color-semantic-action-primary-hover);
+  --rf-button-hover-border: var(--rf-color-semantic-action-primary-hover);
+  --rf-button-hover-color: var(--rf-color-primitive-neutral-white);
+
   align-items: center;
-  background: var(--rf-color-primitive-brand-slate);
-  border: var(--rf-border-width-hairline) solid var(--rf-color-primitive-brand-slate);
+  background: var(--rf-button-background);
+  border: var(--rf-border-width-hairline) solid var(--rf-button-border);
   border-radius: var(--rf-radius-default);
-  color: var(--rf-color-primitive-neutral-white);
+  color: var(--rf-button-color);
   cursor: pointer;
   display: inline-flex;
   font-family: var(--rf-font-family-utility);
@@ -20,45 +32,85 @@
     border-color var(--rf-motion-duration-fast) var(--rf-motion-easing-standard);
 }
 
-.rf-button--primary:hover:not(:disabled) {
-  background: var(--rf-color-semantic-action-primary-hover);
+.rf-button:hover:not(:disabled) {
+  background: var(--rf-button-hover-background);
+  border-color: var(--rf-button-hover-border);
+  color: var(--rf-button-hover-color);
 }
 
-.rf-button--primary:active:not(:disabled) {
-  background: var(--rf-color-semantic-action-primary-active);
+.rf-button:active:not(:disabled) {
+  background: var(--rf-button-active-background);
+  border-color: var(--rf-button-active-border);
+  color: var(--rf-button-active-color);
 }
 
 .rf-button--secondary {
-  background: var(--rf-color-primitive-neutral-white);
-  color: var(--rf-color-primitive-brand-slate);
-}
-
-.rf-button--secondary:hover:not(:disabled) {
-  background: var(--rf-color-primitive-neutral-off-white);
-}
-
-.rf-button--secondary:active:not(:disabled) {
-  background: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-active-background: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-active-border: var(--rf-color-semantic-border-strong);
+  --rf-button-active-color: var(--rf-color-primitive-brand-slate);
+  --rf-button-background: var(--rf-color-primitive-neutral-white);
+  --rf-button-color: var(--rf-color-primitive-brand-slate);
+  --rf-button-hover-background: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-hover-border: var(--rf-color-primitive-brand-slate);
+  --rf-button-hover-color: var(--rf-color-primitive-brand-slate);
 }
 
 .rf-button--tertiary {
-  background: var(--rf-color-primitive-neutral-off-white);
-  border-color: var(--rf-color-primitive-neutral-off-white);
-  color: var(--rf-color-primitive-brand-slate);
+  --rf-button-active-background: var(--rf-color-primitive-neutral-white);
+  --rf-button-active-border: var(--rf-color-primitive-neutral-white);
+  --rf-button-active-color: var(--rf-color-primitive-brand-slate);
+  --rf-button-background: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-border: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-color: var(--rf-color-primitive-brand-slate);
+  --rf-button-hover-background: var(--rf-color-primitive-neutral-white);
+  --rf-button-hover-border: var(--rf-color-primitive-neutral-white);
+  --rf-button-hover-color: var(--rf-color-primitive-brand-slate);
 }
 
-.rf-button--tertiary:hover:not(:disabled) {
-  background: var(--rf-color-primitive-neutral-white);
-  border-color: var(--rf-color-primitive-neutral-white);
+.rf-button--surface-inverse {
+  --rf-button-focus-color: var(--rf-color-semantic-focus-inverse);
+  --rf-button-focus-shadow: 0 0 0 var(--rf-space-1) var(--rf-color-semantic-focus-inverse);
 }
 
-.rf-button--tertiary:active:not(:disabled) {
-  background: var(--rf-color-primitive-neutral-white);
-  border-color: var(--rf-color-primitive-neutral-white);
+.rf-button--surface-inverse.rf-button--primary {
+  --rf-button-active-background: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-active-border: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-active-color: var(--rf-color-primitive-brand-slate);
+  --rf-button-background: var(--rf-color-primitive-neutral-white);
+  --rf-button-border: var(--rf-color-primitive-neutral-white);
+  --rf-button-color: var(--rf-color-primitive-brand-slate);
+  --rf-button-hover-background: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-hover-border: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-hover-color: var(--rf-color-primitive-brand-slate);
+}
+
+.rf-button--surface-inverse.rf-button--secondary {
+  --rf-button-active-background: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-active-border: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-active-color: var(--rf-color-primitive-brand-slate);
+  --rf-button-background: var(--rf-color-primitive-brand-slate);
+  --rf-button-border: var(--rf-color-primitive-neutral-white);
+  --rf-button-color: var(--rf-color-primitive-neutral-white);
+  --rf-button-hover-background: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-hover-border: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-hover-color: var(--rf-color-primitive-brand-slate);
+}
+
+.rf-button--surface-inverse.rf-button--tertiary {
+  --rf-button-active-background: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-active-border: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-active-color: var(--rf-color-primitive-brand-slate);
+  --rf-button-background: var(--rf-color-primitive-brand-slate);
+  --rf-button-border: var(--rf-color-primitive-brand-slate);
+  --rf-button-color: var(--rf-color-primitive-neutral-white);
+  --rf-button-hover-background: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-hover-border: var(--rf-color-primitive-neutral-off-white);
+  --rf-button-hover-color: var(--rf-color-primitive-brand-slate);
 }
 
 .rf-button:focus-visible {
-  outline: var(--rf-border-width-focus) solid var(--rf-color-semantic-focus-light);
+  box-shadow: var(--rf-button-focus-shadow);
+  outline: var(--rf-border-width-focus) solid var(--rf-button-focus-color);
   outline-offset: var(--rf-space-1);
 }
 

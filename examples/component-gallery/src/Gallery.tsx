@@ -129,14 +129,14 @@ export function Gallery() {
               >
                 <h3>{surface === 'light' ? 'Light' : 'Inverse'} surface</h3>
                 <div className="gallery-state-grid">
-                  <div data-gallery-state="primary"><span>Primary</span><Button icon={<Search />}>Review evidence</Button></div>
-                  <div data-gallery-state="secondary"><span>Secondary</span><Button icon={<ArrowRight />} iconPosition="trailing" variant="secondary">View details</Button></div>
-                  <div data-gallery-state="tertiary"><span>Tertiary</span><Button icon={<Check />} variant="tertiary">Mark reviewed</Button></div>
-                  <div data-gallery-state="hover"><span>Hover</span><Button className="gallery-force-button-hover" variant="secondary">Hover state</Button></div>
-                  <div data-gallery-state="focus-visible"><span>Focus-visible</span><Button className="gallery-force-button-focus" variant="secondary">Focus state</Button></div>
-                  <div data-gallery-state="active"><span>Active</span><Button className="gallery-force-button-active" variant="secondary">Pressed state</Button></div>
-                  <div data-gallery-state="loading"><span>Loading</span><Button loading>Loading state</Button></div>
-                  <div data-gallery-state="disabled"><span>Disabled</span><Button disabled>Disabled state</Button></div>
+                  <div data-gallery-state="primary"><span>Primary</span><Button icon={<Search />} surface={surface}>Review evidence</Button></div>
+                  <div data-gallery-state="secondary"><span>Secondary</span><Button icon={<ArrowRight />} iconPosition="trailing" surface={surface} variant="secondary">View details</Button></div>
+                  <div data-gallery-state="tertiary"><span>Tertiary</span><Button icon={<Check />} surface={surface} variant="tertiary">Mark reviewed</Button></div>
+                  <div data-gallery-state="hover"><span>Hover</span><Button className="gallery-force-button-hover" surface={surface} variant="secondary">Hover state</Button></div>
+                  <div data-gallery-state="focus-visible"><span>Focus-visible</span><Button className="gallery-force-button-focus" surface={surface} variant="secondary">Focus state</Button></div>
+                  <div data-gallery-state="active"><span>Active</span><Button className="gallery-force-button-active" surface={surface} variant="secondary">Pressed state</Button></div>
+                  <div data-gallery-state="loading"><span>Loading</span><Button loading surface={surface}>Loading state</Button></div>
+                  <div data-gallery-state="disabled"><span>Disabled</span><Button disabled surface={surface}>Disabled state</Button></div>
                 </div>
               </Card>
             ))}
@@ -152,9 +152,9 @@ export function Gallery() {
             <Card border="none" className="gallery-inverse-link" surface="inverse">
               <Link href="#keyboard-motion" variant="inverse">Inverse surface link</Link>
             </Card>
-            <p><Link className="gallery-force-link-focus" href="#link-focus">Forced focus-visible review</Link></p>
-            <p data-gallery-component="link" data-gallery-state="hover"><span className="gallery-utility">Hover</span><Link className="gallery-force-link-hover" href="#link-hover">Forced hover review</Link></p>
-            <p data-gallery-component="link" data-gallery-state="active"><span className="gallery-utility">Active</span><Link className="gallery-force-link-active" href="#link-active">Forced active review</Link></p>
+            <p id="link-focus"><Link className="gallery-force-link-focus" href="#link-focus">Forced focus-visible review</Link></p>
+            <p data-gallery-component="link" data-gallery-state="hover" id="link-hover"><span className="gallery-utility">Hover</span><Link className="gallery-force-link-hover" href="#link-hover">Forced hover review</Link></p>
+            <p data-gallery-component="link" data-gallery-state="active" id="link-active"><span className="gallery-utility">Active</span><Link className="gallery-force-link-active" href="#link-active">Forced active review</Link></p>
           </div>
         </SectionShell>
 
@@ -181,6 +181,18 @@ export function Gallery() {
               <h3>Inverse · maximum</h3><p>A high-contrast structural band.</p>
             </SectionShell>
           </div>
+          <SectionShell
+            className="gallery-mini-shell gallery-full-bleed-shell"
+            data-gallery-width="full-bleed"
+            framed
+            label="Full-bleed viewport-edge SectionShell"
+            width="full-bleed"
+          >
+            <div className="gallery-full-bleed-content">
+              <h3>Full-bleed · viewport edge</h3>
+              <p>The content edge reaches the viewport without widening the document.</p>
+            </div>
+          </SectionShell>
         </SectionShell>
 
         <SectionShell heading="Evidence compositions" id="evidence-compositions" width="maximum">

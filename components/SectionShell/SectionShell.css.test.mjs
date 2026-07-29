@@ -14,12 +14,10 @@ describe('SectionShell styles', () => {
     );
   });
 
-  it('keeps the full-bleed container connected to the approved gutter token', () => {
-    expect(stylesheet).toContain(
-      'inline-size: calc(100% + (var(--rf-space-semantic-page-gutter) * 2));',
+  it('lets a centered full-bleed container reach viewport edges without widening the page', () => {
+    expect(stylesheet).toMatch(
+      /\.rf-section-shell__container--full-bleed\s*\{[\s\S]*inline-size:\s*auto;[\s\S]*margin-inline:\s*calc\(50% - 50vi\);[\s\S]*padding-inline:\s*0;/,
     );
-    expect(stylesheet).toContain(
-      'margin-inline: calc(var(--rf-space-semantic-page-gutter) * -1);',
-    );
+    expect(stylesheet).not.toContain('inline-size: calc(100% +');
   });
 });

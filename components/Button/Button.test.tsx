@@ -40,6 +40,27 @@ describe('Button', () => {
     },
   );
 
+  it('applies the inverse-surface contract to every runtime state', () => {
+    const { rerender } = render(<Button surface="inverse">Review evidence</Button>);
+
+    const button = screen.getByRole('button', { name: 'Review evidence' });
+    expect(button).toHaveClass('rf-button--surface-inverse');
+    expect(button).not.toHaveAttribute('surface');
+
+    rerender(<Button loading surface="inverse">Review evidence</Button>);
+    expect(screen.getByRole('button', { name: 'Review evidence' })).toHaveClass(
+      'rf-button--surface-inverse',
+      'rf-button--loading',
+    );
+    expect(screen.getByRole('button', { name: 'Review evidence' })).toBeDisabled();
+
+    rerender(<Button disabled surface="inverse">Review evidence</Button>);
+    expect(screen.getByRole('button', { name: 'Review evidence' })).toHaveClass(
+      'rf-button--surface-inverse',
+    );
+    expect(screen.getByRole('button', { name: 'Review evidence' })).toBeDisabled();
+  });
+
   it('is disabled and cannot be activated when disabled', async () => {
     const user = userEvent.setup();
     const onClick = vi.fn();

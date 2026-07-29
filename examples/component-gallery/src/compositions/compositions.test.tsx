@@ -126,6 +126,28 @@ describe('AnnotatedScreen', () => {
 
     expect(screen.getByRole('heading', { level: 4, name: 'Nested annotation review' })).toBeVisible();
   });
+
+  it.each([
+    ['zero', []],
+    [
+      'four',
+      [
+        ...annotations,
+        { detail: 'A third control lacks a visible relationship.', title: 'Group the action' },
+        { detail: 'A fourth marker has no defined position.', title: 'Remove excess detail' },
+      ],
+    ],
+  ] as const)('rejects %s annotations outside the supported one-to-three range', (_, invalid) => {
+    expect(() =>
+      render(
+        <AnnotatedScreen
+          annotations={invalid as unknown as typeof annotations}
+          caption="Neutral account interface."
+          title="Unsupported annotation count"
+        />,
+      ),
+    ).toThrow('AnnotatedScreen supports between one and three annotations.');
+  });
 });
 
 describe('PriorityMap', () => {
@@ -241,6 +263,12 @@ describe('component gallery coverage', () => {
         'loading',
         'disabled',
       ]);
+
+      if (surface === 'inverse') {
+        stateGroup!.querySelectorAll('.rf-button').forEach((button) =>
+          expect(button).toHaveClass('rf-button--surface-inverse'),
+        );
+      }
     },
   );
 
@@ -253,6 +281,34 @@ describe('component gallery coverage', () => {
     expect(
       container.querySelector('[data-gallery-component="link"][data-gallery-state="active"]'),
     ).toBeInTheDocument();
+  });
+
+  it('resolves every in-page gallery link to a real target', () => {
+    const { container } = render(<Gallery />);
+    const inPageLinks = [...container.querySelectorAll<HTMLAnchorElement>('a[href^="#"]')];
+
+    expect(inPageLinks.length).toBeGreaterThan(0);
+    inPageLinks.forEach((link) => {
+      const targetId = link.getAttribute('href')?.slice(1);
+      expect(targetId, `${link.textContent} has an empty fragment`).toBeTruthy();
+      expect(
+        document.getElementById(targetId!),
+        `${link.textContent} does not resolve to #${targetId}`,
+      ).toBeInTheDocument();
+    });
+  });
+
+  it('includes a full-bleed SectionShell specimen for viewport-edge QA', () => {
+    const { container } = render(<Gallery />);
+    const specimen = container.querySelector<HTMLElement>('[data-gallery-width="full-bleed"]');
+
+    expect(specimen).toBeInTheDocument();
+    expect(
+      specimen?.querySelector('.rf-section-shell__container--full-bleed'),
+    ).toBeInTheDocument();
+    expect(within(specimen!).getByRole('heading', { level: 3 })).toHaveTextContent(
+      'Full-bleed · viewport edge',
+    );
   });
 
   it.each([

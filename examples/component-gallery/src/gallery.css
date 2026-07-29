@@ -117,50 +117,27 @@ a {
   padding: var(--rf-space-4);
 }
 
-.gallery-force-button-hover.rf-button--secondary {
-  background: var(--rf-color-primitive-neutral-off-white);
+.gallery-force-button-hover.rf-button {
+  background: var(--rf-button-hover-background);
+  border-color: var(--rf-button-hover-border);
+  color: var(--rf-button-hover-color);
 }
 
 .gallery-force-button-focus.rf-button {
-  outline: var(--rf-border-width-focus) solid var(--rf-color-semantic-focus-light);
+  box-shadow: var(--rf-button-focus-shadow);
+  outline: var(--rf-border-width-focus) solid var(--rf-button-focus-color);
   outline-offset: var(--rf-space-1);
 }
 
-.gallery-force-button-active.rf-button--secondary {
-  background: var(--rf-color-primitive-neutral-off-white);
-  border-color: var(--rf-color-semantic-border-strong);
+.gallery-force-button-active.rf-button {
+  background: var(--rf-button-active-background);
+  border-color: var(--rf-button-active-border);
+  color: var(--rf-button-active-color);
 }
 
 .gallery-button-surface--inverse .gallery-state-grid > div {
   background: var(--rf-color-primitive-brand-slate);
   border-color: var(--rf-color-primitive-neutral-white);
-}
-
-.gallery-button-surface--inverse .rf-button--primary,
-.gallery-button-surface--inverse .rf-button--loading,
-.gallery-button-surface--inverse .rf-button:disabled {
-  background: var(--rf-color-primitive-neutral-white);
-  border-color: var(--rf-color-primitive-neutral-white);
-  color: var(--rf-color-primitive-brand-slate);
-}
-
-.gallery-button-surface--inverse .rf-button--secondary,
-.gallery-button-surface--inverse .rf-button--tertiary {
-  background: var(--rf-color-primitive-brand-slate);
-  border-color: var(--rf-color-primitive-neutral-white);
-  color: var(--rf-color-primitive-neutral-white);
-}
-
-.gallery-button-surface--inverse .gallery-force-button-hover,
-.gallery-button-surface--inverse .gallery-force-button-active {
-  background: var(--rf-color-primitive-neutral-off-white);
-  border-color: var(--rf-color-primitive-neutral-off-white);
-  color: var(--rf-color-primitive-brand-slate);
-}
-
-.gallery-button-surface--inverse .gallery-force-button-focus {
-  box-shadow: 0 0 0 var(--rf-space-1) var(--rf-color-semantic-focus-inverse);
-  outline-color: var(--rf-color-semantic-focus-inverse);
 }
 
 .gallery-link-grid {
@@ -207,6 +184,19 @@ a {
 
 .gallery-mini-shell .rf-section-shell__container {
   padding-inline: var(--rf-space-4);
+}
+
+.gallery-full-bleed-shell {
+  margin-block-start: var(--rf-grid-gutter);
+}
+
+.gallery-full-bleed-shell .rf-section-shell__container {
+  padding-inline: 0;
+}
+
+.gallery-full-bleed-content {
+  border-inline: var(--rf-border-width-hairline) solid var(--rf-color-semantic-border-decorative);
+  padding: var(--rf-space-4) var(--rf-space-semantic-page-gutter);
 }
 
 .gallery-composition-group {
