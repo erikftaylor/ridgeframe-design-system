@@ -22,8 +22,8 @@
 }
 
 .rf-container--full-bleed {
-  inline-size: auto;
-  margin-inline: calc(50% - 50vi);
+  inline-size: 100%;
+  margin-inline: 0;
   max-width: none;
   padding-inline: 0;
 }

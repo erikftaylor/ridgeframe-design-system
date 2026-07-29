@@ -59,25 +59,18 @@ describe('layout foundations', () => {
     expect(containers).toMatch(/\.rf-container--standard[\s\S]*max-width:\s*var\(--rf-container-standard\)/);
     expect(containers).toMatch(/\.rf-container--reading[\s\S]*max-width:\s*var\(--rf-container-reading\)/);
     expect(containers).toMatch(/\.rf-container--maximum[\s\S]*max-width:\s*var\(--rf-container-maximum\)/);
-    expect(containers).toMatch(
-      /\.rf-container--full-bleed\s*\{[\s\S]*inline-size:\s*auto;[\s\S]*margin-inline:\s*calc\(50% - 50vi\);[\s\S]*max-width:\s*none;[\s\S]*padding-inline:\s*0/,
-    );
-    expect(containers).not.toContain('inline-size: calc(100% +');
+    const fullBleedRules = [
+      ...containers.matchAll(/\.rf-container--full-bleed\s*\{([^}]*)\}/g),
+    ];
+    const fullBleedRule = fullBleedRules.at(-1)?.[1] ?? '';
+
+    expect(fullBleedRule).toContain('inline-size: 100%;');
+    expect(fullBleedRule).toContain('margin-inline: 0;');
+    expect(fullBleedRule).toContain('max-width: none;');
+    expect(fullBleedRule).toContain('padding-inline: 0;');
+    expect(fullBleedRule).not.toMatch(/(?:vw|vi|cqi|calc\(|-\s*var\()/);
     expect(containers).toContain('padding-inline: var(--rf-space-semantic-page-gutter);');
   });
-
-  it.each([375, 500, 834, 1280])(
-    'resolves the centered full-bleed breakout to the %ipx viewport without overflow',
-    (viewportWidth) => {
-      const gutter = viewportWidth < 768 ? 16 : viewportWidth < 1024 ? 24 : 32;
-      const containingWidth = viewportWidth - gutter * 2;
-      const inlineMargin = containingWidth / 2 - viewportWidth / 2;
-      const autoInlineSize = containingWidth - inlineMargin * 2;
-
-      expect(inlineMargin).toBe(-gutter);
-      expect(autoInlineSize).toBe(viewportWidth);
-    },
-  );
 
   it('uses the approved readable EB Garamond body baseline', () => {
     // Replacing either token would lower body readability or discard the editorial body-face contract.

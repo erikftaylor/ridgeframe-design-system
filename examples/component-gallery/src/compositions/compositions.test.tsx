@@ -306,9 +306,8 @@ describe('component gallery coverage', () => {
     expect(
       specimen?.querySelector('.rf-section-shell__container--full-bleed'),
     ).toBeInTheDocument();
-    expect(within(specimen!).getByRole('heading', { level: 3 })).toHaveTextContent(
-      'Full-bleed · viewport edge',
-    );
+    expect(specimen?.parentElement).toBe(container.querySelector('main'));
+    expect(within(specimen!).getByRole('heading', { level: 2 })).toHaveTextContent('Full-bleed');
   });
 
   it.each([

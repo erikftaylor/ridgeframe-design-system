@@ -187,11 +187,11 @@ a {
 }
 
 .gallery-full-bleed-shell {
-  margin-block-start: var(--rf-grid-gutter);
+  padding-block: var(--rf-space-6);
 }
 
-.gallery-full-bleed-shell .rf-section-shell__container {
-  padding-inline: 0;
+.gallery-full-bleed-shell .rf-section-shell__heading {
+  padding-inline: var(--rf-space-semantic-page-gutter);
 }
 
 .gallery-full-bleed-content {

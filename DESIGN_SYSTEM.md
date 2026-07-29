@@ -171,7 +171,7 @@ Use Space Grotesk for display, headings, navigation, labels, buttons, and utilit
 
 ## 6. Layout and responsive behavior
 
-Start mobile-first with one column, then use eight columns at tablet and twelve at desktop and wide. Breakpoints are `0px`, `768px`, `1024px`, and `1440px`; content widths are `720px` reading, `1120px` standard, and `1280px` maximum. Stack and reorder intentionally on mobile rather than shrinking desktop layouts. Use contained, framed, reading-width, and full-bleed patterns; keep reflow free of horizontal page scrolling.
+Start mobile-first with one column, then use eight columns at tablet and twelve at desktop and wide. Breakpoints are `0px`, `768px`, `1024px`, and `1440px`; content widths are `720px` reading, `1120px` standard, and `1280px` maximum. Stack and reorder intentionally on mobile rather than shrinking desktop layouts. Use contained, framed, reading-width, and full-bleed patterns; keep reflow free of horizontal page scrolling. Place a full-bleed SectionShell or reusable container only at a viewport-wide page-shell boundary. Full-bleed does not escape a nested contained layout and never uses viewport-unit breakout math, widened inline sizes, or negative margins.
 
 ## 7. Four public primitives
 

@@ -14,10 +14,16 @@ describe('SectionShell styles', () => {
     );
   });
 
-  it('lets a centered full-bleed container reach viewport edges without widening the page', () => {
-    expect(stylesheet).toMatch(
-      /\.rf-section-shell__container--full-bleed\s*\{[\s\S]*inline-size:\s*auto;[\s\S]*margin-inline:\s*calc\(50% - 50vi\);[\s\S]*padding-inline:\s*0;/,
-    );
-    expect(stylesheet).not.toContain('inline-size: calc(100% +');
+  it('keeps full-bleed scrollbar-safe at a viewport-wide SectionShell boundary', () => {
+    const rules = [
+      ...stylesheet.matchAll(/\.rf-section-shell__container--full-bleed\s*\{([^}]*)\}/g),
+    ];
+    const rule = rules.at(-1)?.[1] ?? '';
+
+    expect(rule).toContain('inline-size: 100%;');
+    expect(rule).toContain('margin-inline: 0;');
+    expect(rule).toContain('max-width: none;');
+    expect(rule).toContain('padding-inline: 0;');
+    expect(rule).not.toMatch(/(?:vw|vi|cqi|calc\(|-\s*var\()/);
   });
 });

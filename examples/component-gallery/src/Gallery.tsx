@@ -181,18 +181,18 @@ export function Gallery() {
               <h3>Inverse · maximum</h3><p>A high-contrast structural band.</p>
             </SectionShell>
           </div>
-          <SectionShell
-            className="gallery-mini-shell gallery-full-bleed-shell"
-            data-gallery-width="full-bleed"
-            framed
-            label="Full-bleed viewport-edge SectionShell"
-            width="full-bleed"
-          >
-            <div className="gallery-full-bleed-content">
-              <h3>Full-bleed · viewport edge</h3>
-              <p>The content edge reaches the viewport without widening the document.</p>
-            </div>
-          </SectionShell>
+        </SectionShell>
+
+        <SectionShell
+          className="gallery-full-bleed-shell"
+          data-gallery-width="full-bleed"
+          framed
+          heading="Full-bleed SectionShell"
+          width="full-bleed"
+        >
+          <div className="gallery-full-bleed-content">
+            <p>A full-bleed container belongs at a viewport-wide page-shell boundary, where it reaches both edges without breakout math or document overflow.</p>
+          </div>
         </SectionShell>
 
         <SectionShell heading="Evidence compositions" id="evidence-compositions" width="maximum">
