@@ -558,7 +558,7 @@ The initial release is `v0.1.0`; the deferred website primitives and homepage sh
 
 Because `/design-sync` does not watch the repository, any token or component change requires an explicit sync before Claude Design is treated as current. The tagged-release sync is required even when the branch was synced during development.
 
-The `v0.1.0` changelog entry records that upstream project materials using “Convergence Strategies Group” refer to the former working name. “Ridgeframe Strategies” is the canonical current name; the legacy wording is not a second brand or component namespace.
+The `v0.1.0` changelog entry records the completed rename from “Convergence Strategies Group” to “Ridgeframe Strategies.” The two canonical upstream documents now use Ridgeframe Strategies. The former name remains historical context only and is not a second brand or component namespace.
 
 Consumers such as Claude Design, a future Figma generator, a deck builder, or a demo-site builder pin semantic tags instead of tracking `main`.
 
@@ -625,6 +625,5 @@ The repository is ready for `v0.2.0` when:
 
 1. **Severity mapping ratification — Erik, with Chris:** Confirm that Critical → rust, High → teal, and Medium → slate matches the firm's audit framework and client-facing artifacts. If not, select only from verified pairs or require a computed and verified replacement before ratification.
 2. **Accessibility standard reconciliation — Erik and Chris:** Decide whether the audit framework and client-facing materials will be updated from WCAG 2.1 AA to WCAG 2.2 AA. Complete the cross-material update before client use.
-3. **Legacy name cleanup — Chris, with Erik:** Decide whether `00 – Strategic Foundation` and `01 – Website Specification` will be edited to replace “Convergence Strategies Group” or retained with an explicit historical-name notice.
-4. **Upstream document locations — Erik:** Record the canonical paths or URLs and approved versions of `00 – Strategic Foundation` and `01 – Website Specification` before implementation begins.
-5. **Release split ratification — Erik and Chris:** Approve `0.1.0` as tokens, four primitives, three evidence compositions, gallery, and CI, with the remaining website concerns deferred to `0.2.0`.
+3. **Upstream document locations — Erik:** Record the canonical paths or URLs and approved versions of `00 – Strategic Foundation` and `01 – Website Specification` before implementation begins.
+4. **Release split ratification — Erik and Chris:** Approve `0.1.0` as tokens, four primitives, three evidence compositions, gallery, and CI, with the remaining website concerns deferred to `0.2.0`.
