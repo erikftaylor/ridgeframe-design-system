@@ -26,6 +26,7 @@ export const checkGenerated = ({ rootDir = scriptRoot } = {}) => {
       const relativePaths = {
         css: 'tokens/generated/tokens.css',
         documentation: 'DESIGN_SYSTEM.md',
+        media: 'tokens/generated/media.css',
         typescript: 'tokens/generated/tokens.ts',
       };
       return relativePaths[name];

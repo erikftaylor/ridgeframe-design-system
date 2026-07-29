@@ -1,0 +1,8 @@
+/**
+ * This file is generated from tokens/source/*.json.
+ * Do not edit directly. Run `npm run generate:tokens`.
+ */
+@custom-media --rf-breakpoint-desktop (min-width: 1024px);
+@custom-media --rf-breakpoint-mobile (min-width: 0px);
+@custom-media --rf-breakpoint-tablet (min-width: 768px);
+@custom-media --rf-breakpoint-wide (min-width: 1440px);

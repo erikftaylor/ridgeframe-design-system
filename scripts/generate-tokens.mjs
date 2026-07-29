@@ -139,6 +139,14 @@ const renderCss = (tokens) => [
   '',
 ].join('\n');
 
+const renderCustomMedia = (tokens) => [
+  HEADER,
+  ...tokens
+    .filter((token) => token.name.startsWith('breakpoint.'))
+    .map((token) => `@custom-media --rf-${token.name.replaceAll('.', '-')} (min-width: ${token.value});`),
+  '',
+].join('\n');
+
 const renderTypescript = (tokens) => [
   HEADER,
   'export const tokens = {',
@@ -173,6 +181,7 @@ const renderDocumentation = (documentation, tokens) => {
 export const generatedPaths = (rootDir = scriptRoot) => ({
   css: resolve(rootDir, 'tokens/generated/tokens.css'),
   documentation: resolve(rootDir, 'DESIGN_SYSTEM.md'),
+  media: resolve(rootDir, 'tokens/generated/media.css'),
   typescript: resolve(rootDir, 'tokens/generated/tokens.ts'),
 });
 
@@ -187,6 +196,7 @@ export const generateTokens = ({ rootDir = scriptRoot, write = false } = {}) => 
   const artifacts = {
     css: renderCss(tokens),
     documentation: renderDocumentation(readFileSync(paths.documentation, 'utf8'), tokens),
+    media: renderCustomMedia(tokens),
     typescript: renderTypescript(tokens),
   };
 

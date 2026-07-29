@@ -1,7 +1,8 @@
 .rf-container,
 .rf-container--standard,
 .rf-container--reading,
-.rf-container--maximum {
+.rf-container--maximum,
+.rf-container--full-bleed {
   inline-size: 100%;
   margin-inline: auto;
   padding-inline: var(--rf-space-semantic-page-gutter);
@@ -18,4 +19,10 @@
 
 .rf-container--maximum {
   max-width: var(--rf-container-maximum);
+}
+
+.rf-container--full-bleed {
+  inline-size: calc(100% + (var(--rf-space-semantic-page-gutter) * 2));
+  margin-inline: calc(var(--rf-space-semantic-page-gutter) * -1);
+  max-width: none;
 }

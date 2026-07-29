@@ -1,4 +1,5 @@
 import {
+  existsSync,
   mkdtempSync,
   mkdirSync,
   readFileSync,
@@ -22,6 +23,7 @@ type GeneratorModule = {
   generateTokens: (options: { rootDir: string; write?: boolean }) => {
     css: string;
     documentation: string;
+    media: string;
     typescript: string;
   };
 };
@@ -94,14 +96,18 @@ describe('token generation', () => {
     const { generateTokens } = await loadGenerator();
 
     const first = generateTokens({ rootDir, write: true });
+    const mediaPath = resolve(rootDir, 'tokens/generated/media.css');
+    expect(existsSync(mediaPath)).toBe(true);
     const firstArtifacts = {
       css: readFileSync(resolve(rootDir, 'tokens/generated/tokens.css'), 'utf8'),
+      media: readFileSync(mediaPath, 'utf8'),
       typescript: readFileSync(resolve(rootDir, 'tokens/generated/tokens.ts'), 'utf8'),
       documentation: readFileSync(resolve(rootDir, 'DESIGN_SYSTEM.md'), 'utf8'),
     };
     const second = generateTokens({ rootDir, write: true });
     const secondArtifacts = {
       css: readFileSync(resolve(rootDir, 'tokens/generated/tokens.css'), 'utf8'),
+      media: readFileSync(mediaPath, 'utf8'),
       typescript: readFileSync(resolve(rootDir, 'tokens/generated/tokens.ts'), 'utf8'),
       documentation: readFileSync(resolve(rootDir, 'DESIGN_SYSTEM.md'), 'utf8'),
     };
@@ -152,6 +158,34 @@ describe('token generation', () => {
     ].join('\n'));
     expect(firstArtifacts).toEqual(secondArtifacts);
     expect(second).toEqual(first);
+  });
+
+  it('derives named custom media from breakpoint tokens', async () => {
+    // Dropping this artifact or hard-coding its thresholds would let responsive CSS drift from token sources.
+    const rootDir = createFixture();
+    writeCompleteSources(rootDir);
+    writeJson(resolve(rootDir, 'tokens/source/layout.json'), {
+      breakpoint: {
+        tablet: { $type: 'dimension', $value: '768px' },
+        desktop: { $type: 'dimension', $value: '1024px' },
+      },
+    });
+    const { generateTokens } = await loadGenerator();
+
+    const artifacts = generateTokens({ rootDir, write: true });
+
+    expect(artifacts.media).toBe([
+      '/**',
+      ' * This file is generated from tokens/source/*.json.',
+      ' * Do not edit directly. Run `npm run generate:tokens`.',
+      ' */',
+      '@custom-media --rf-breakpoint-desktop (min-width: 1024px);',
+      '@custom-media --rf-breakpoint-tablet (min-width: 768px);',
+      '',
+    ].join('\n'));
+    const mediaPath = resolve(rootDir, 'tokens/generated/media.css');
+    expect(existsSync(mediaPath)).toBe(true);
+    expect(readFileSync(mediaPath, 'utf8')).toBe(artifacts.media);
   });
 
   it.each([
