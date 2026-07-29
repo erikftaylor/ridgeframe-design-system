@@ -16,6 +16,7 @@ export type SectionShellProps = HTMLAttributes<HTMLElement> & {
 export const SectionShell = forwardRef<HTMLElement, SectionShellProps>(function SectionShell(
   {
     'aria-label': ariaLabel,
+    'aria-labelledby': ariaLabelledBy,
     as = 'section',
     children,
     className,
@@ -38,10 +39,18 @@ export const SectionShell = forwardRef<HTMLElement, SectionShellProps>(function 
     .filter(Boolean)
     .join(' ');
   const accessibleLabel = label ?? ariaLabel;
+  const hasAccessibleName = [heading, accessibleLabel, ariaLabelledBy].some((value) =>
+    Boolean(value?.trim()),
+  );
+
+  if ((as === 'nav' || as === 'aside') && !hasAccessibleName) {
+    throw new Error('SectionShell requires an accessible name when rendered as nav or aside.');
+  }
+
   const sectionAttributes = {
     ...sectionProps,
     'aria-label': heading ? undefined : accessibleLabel,
-    'aria-labelledby': heading ? headingId : undefined,
+    'aria-labelledby': heading ? headingId : ariaLabelledBy,
     className: classes,
     ref: ref as Ref<HTMLElement>,
   };

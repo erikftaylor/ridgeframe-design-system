@@ -41,6 +41,20 @@ describe('SectionShell', () => {
     );
   });
 
+  it('preserves a caller-provided heading association when it does not render a heading', () => {
+    render(
+      <>
+        <h2 id="evidence-heading">Supporting evidence</h2>
+        <SectionShell aria-labelledby="evidence-heading">Evidence content</SectionShell>
+      </>,
+    );
+
+    expect(screen.getByRole('region', { name: 'Supporting evidence' })).toHaveAttribute(
+      'aria-labelledby',
+      'evidence-heading',
+    );
+  });
+
   it.each([
     ['main', 'main'],
     ['nav', 'navigation'],
@@ -50,6 +64,21 @@ describe('SectionShell', () => {
 
       expect(screen.getByRole(role, { name: `${as} content` })).toHaveTextContent('Landmark content');
     });
+
+  it.each(['nav', 'aside'] as const)('rejects an unnamed %s landmark', (as) => {
+    expect(() => render(<SectionShell as={as}>Landmark content</SectionShell>)).toThrow(
+      'SectionShell requires an accessible name when rendered as nav or aside.',
+    );
+  });
+
+  it.each([
+    ['section', 'section'],
+    ['main', 'main'],
+  ] as const)('permits an unnamed %s', (as, element) => {
+    const { container } = render(<SectionShell as={as}>Ordinary content</SectionShell>);
+
+    expect(container.querySelector(element)).toHaveTextContent('Ordinary content');
+  });
 
   it.each(['standard', 'reading', 'maximum', 'full-bleed'] as const)(
     'applies the approved %s width to the inner container',
