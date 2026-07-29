@@ -1,0 +1,56 @@
+.rf-card {
+  background: var(--rf-color-semantic-surface-default);
+  border: var(--rf-border-width-hairline) solid transparent;
+  border-radius: var(--rf-radius-default);
+  box-shadow: var(--rf-shadow-none);
+  color: var(--rf-color-semantic-text-primary);
+  transition: border-color var(--rf-motion-duration-fast) var(--rf-motion-easing-standard);
+}
+
+.rf-card--surface-raised {
+  background: var(--rf-color-semantic-surface-raised);
+  box-shadow: var(--rf-shadow-raised);
+}
+
+.rf-card--surface-subtle-emphasis {
+  background: var(--rf-color-semantic-surface-subtle-emphasis);
+}
+
+.rf-card--surface-inverse {
+  background: var(--rf-color-semantic-surface-inverse);
+  color: var(--rf-color-semantic-text-inverse);
+}
+
+.rf-card--padding-none {
+  padding: var(--rf-space-none);
+}
+
+.rf-card--padding-compact {
+  padding: var(--rf-space-3);
+}
+
+.rf-card--padding-default {
+  padding: var(--rf-space-4);
+}
+
+.rf-card--padding-spacious {
+  padding: var(--rf-space-6);
+}
+
+.rf-card--border-structural {
+  border-color: var(--rf-color-semantic-border-decorative);
+}
+
+.rf-card--border-control {
+  border-color: var(--rf-color-semantic-border-control);
+}
+
+.rf-card--interactive:hover {
+  border-color: var(--rf-color-semantic-border-strong);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rf-card {
+    transition-duration: var(--rf-motion-duration-reduced);
+  }
+}
