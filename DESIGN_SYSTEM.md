@@ -52,6 +52,7 @@ The table below is generated from the same in-memory token graph as `tokens/gene
 <!-- GENERATED:TOKENS:START -->
 | Token | Type | Value |
 | --- | --- | --- |
+| `border.width.focus` | `dimension` | `2px` |
 | `border.width.hairline` | `dimension` | `1px` |
 | `breakpoint.desktop` | `dimension` | `1024px` |
 | `breakpoint.mobile` | `dimension` | `0px` |

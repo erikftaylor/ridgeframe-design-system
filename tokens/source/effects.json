@@ -1,7 +1,8 @@
 {
   "border": {
     "width": {
-      "hairline": { "$type": "dimension", "$value": "1px" }
+      "hairline": { "$type": "dimension", "$value": "1px" },
+      "focus": { "$type": "dimension", "$value": "2px" }
     }
   },
   "radius": {

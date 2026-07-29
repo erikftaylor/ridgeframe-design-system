@@ -17,7 +17,7 @@
 }
 
 .rf-link:focus-visible {
-  outline: var(--rf-border-width-hairline) solid var(--rf-color-semantic-focus-light);
+  outline: var(--rf-border-width-focus) solid var(--rf-color-semantic-focus-light);
   outline-offset: var(--rf-space-1);
 }
 
@@ -61,7 +61,7 @@
 
 .rf-link--inverse:focus-visible {
   box-shadow: 0 0 0 var(--rf-space-1) var(--rf-color-semantic-focus-inverse);
-  outline: var(--rf-border-width-hairline) solid var(--rf-color-semantic-focus-inverse);
+  outline: var(--rf-border-width-focus) solid var(--rf-color-semantic-focus-inverse);
   outline-offset: var(--rf-space-1);
 }
 

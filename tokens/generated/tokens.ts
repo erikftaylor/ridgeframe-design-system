@@ -3,6 +3,7 @@
  * Do not edit directly. Run `npm run generate:tokens`.
  */
 export const tokens = {
+  "border.width.focus": "2px",
   "border.width.hairline": "1px",
   "breakpoint.desktop": "1024px",
   "breakpoint.mobile": "0px",

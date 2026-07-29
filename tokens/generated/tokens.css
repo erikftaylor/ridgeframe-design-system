@@ -3,6 +3,7 @@
  * Do not edit directly. Run `npm run generate:tokens`.
  */
 :root {
+  --rf-border-width-focus: 2px;
   --rf-border-width-hairline: 1px;
   --rf-breakpoint-desktop: 1024px;
   --rf-breakpoint-mobile: 0px;
