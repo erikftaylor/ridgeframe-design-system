@@ -20,5 +20,8 @@ describe('Card styles', () => {
     expect(stylesheet).toContain(
       '.rf-card--interactive:hover {\n  border-color: var(--rf-color-semantic-border-strong);\n}',
     );
+    expect(stylesheet).toContain(
+      '.rf-card--border-none.rf-card--interactive:hover {\n  outline: var(--rf-border-width-hairline) solid currentColor;\n  outline-offset: var(--rf-space-1);\n}',
+    );
   });
 });

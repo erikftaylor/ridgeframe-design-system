@@ -48,6 +48,11 @@
   border-color: var(--rf-color-semantic-border-strong);
 }
 
+.rf-card--border-none.rf-card--interactive:hover {
+  outline: var(--rf-border-width-hairline) solid currentColor;
+  outline-offset: var(--rf-space-1);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .rf-card {
     transition-duration: var(--rf-motion-duration-reduced);
