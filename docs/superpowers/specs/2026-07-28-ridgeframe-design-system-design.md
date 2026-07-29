@@ -1,13 +1,13 @@
 # Ridgeframe Design System Repository Design
 
-**Status:** Revised architecture; ratification pending written-spec review
+**Status:** Approved for `v0.1.0` implementation; website composition pending a current Ridgeframe website specification
 **Date:** 2026-07-28
 **Repository:** `erikftaylor/ridgeframe-design-system`
 **Initial implementation branch:** `feat/design-system-foundation`
 
 ## 1. Purpose
 
-Build a small, production-quality design-system repository that Claude Design can ingest through Claude Code's `/design-sync` command. Version `0.1.0` provides tokens, four React primitives, evidence compositions, and a component gallery. Version `0.2.0` completes the eight-primitive contract and adds the canonical Ridgeframe homepage. The repository must remain understandable to designers and developers and provide a stable code foundation for a future native Figma library.
+Build a small, production-quality design-system repository that Claude Design can ingest through Claude Code's `/design-sync` command. Version `0.1.0` provides tokens, four React primitives, evidence compositions, and a component gallery. Version `0.2.0` completes the eight-primitive contract and may add the Ridgeframe homepage only after a current website specification is approved. The repository must remain understandable to designers and developers and provide a stable code foundation for a future native Figma library.
 
 The system expresses Ridgeframe Strategies as a senior, diagnosis-first product experience and growth consultancy for established, owner-led businesses. Its core promise is:
 
@@ -60,7 +60,7 @@ Version `0.1.0` ships first and includes:
 Version `0.2.0` defers:
 
 - FormControl, Disclosure, Header, and Footer
-- The canonical eleven-section responsive homepage
+- A responsive homepage derived from a future approved Ridgeframe website specification
 - `check-links.mjs` and `check-structure.mjs`
 - Homepage-specific responsive and accessibility validation
 
@@ -72,7 +72,7 @@ Version `0.1.0` excludes:
 
 - A complete marketing website
 - Services, About, Contact, case-study, article, or legal page templates
-- Full audit-report UI, dashboard UI, complete scorecards, full prioritization matrices, or application UI; the three required homepage evidence excerpts remain in scope as reference compositions
+- Full audit-report UI, dashboard UI, complete scorecards, full prioritization matrices, or application UI; the three approved evidence excerpts remain in scope as reference compositions
 - Authentication, ecommerce, or product navigation
 - A Figma plugin
 - A generated or recreated Ridgeframe logo
@@ -86,17 +86,19 @@ Version `0.1.0` excludes:
 
 The system has deliberately separate authorities:
 
-1. **`00 – Strategic Foundation`:** positioning, brand character, creative direction, and the rule that teal is a signal rather than ambient brand color.
-2. **`01 – Website Specification`:** site structure, page content, evidence requirements, and component inventory.
+1. **[Ridgeframe Strategies — Strategic Foundation](https://docs.google.com/document/d/169AxuBLFfFxSYzQkUmwacrtp9UCC0UquwIMkfM8j4hM/edit):** current positioning, audience, outcome hierarchy, team roles, operating boundaries, and open strategic decisions. The document is marked `Current` and was last modified on 2026-07-28.
+2. **[Ridgeframe Strategies — Website Status](https://docs.google.com/document/d/1uxfGCAhgi9ss-2J4Dq-GJhy-3np1KzFGKVNpCiQwspE/edit):** current authority on website readiness. It states that no Ridgeframe sitemap or final website copy is approved and that the archived Convergence outline is not current. The document is marked `Current` and was last modified on 2026-07-28.
 3. **Approved Figma identity components:** logo geometry, wordmark geometry, lockups, and optical spacing.
 4. **`tokens/source/*.json`:** canonical token values.
-5. **`DESIGN_SYSTEM.md`:** canonical usage rules, semantic intent, content guidance, prohibitions, and an automatically generated token snapshot.
+5. **`DESIGN_SYSTEM.md`:** canonical design-system usage rules, semantic intent, content guidance, prohibitions, and an automatically generated token snapshot.
 6. **React component source:** canonical component behavior, properties, DOM semantics, and accessibility implementation.
 7. **Generated files:** derived representations only; never edit them directly.
 8. **Examples:** reference compositions; they demonstrate the system but do not introduce new primitives or tokens.
 9. **Exported SVG, PNG, PDF, or `.fig` files:** distribution artifacts, not replacement masters.
 
 When sources conflict, follow the highest applicable authority. Token generation must make conflicts between JSON values, generated CSS, generated TypeScript, and the token snapshot impossible to merge unnoticed.
+
+The text files [00 - Strategic Foundation](https://drive.google.com/file/d/1OC2dkPvdfaind0Rg-mGKFfDRCn6totFR/view) (`v2.3`) and [01 - Website Specification](https://drive.google.com/file/d/1xO55N0pQmsT1N0iHA43gqHL66mcti2BT/view) (`v2.5`) remain historical Convergence references only. They may explain the origin of a decision already ratified in this specification, but they cannot define current positioning, service tiers, website structure, copy, evidence requirements, or component scope. Their legacy names are preserved for provenance rather than rewritten to appear current.
 
 No asset is approved merely because it exists in the repository. Every identity asset must identify its source and approval status in `assets/README.md` and the relevant manifest. The logo manifest records that approved binaries are absent until they are supplied; it is not permission to synthesize them. The icon manifest records the pinned Lucide package, license, and icon names used by components.
 
@@ -167,7 +169,7 @@ Supporting documents under `docs/decisions/` record significant design or techni
 
 `docs/superpowers/specs/` contains approved design and implementation-planning artifacts used to audit how the repository was created. These files are process records, not machine-facing design-system instructions; `DESIGN_SYSTEM.md` remains Claude's only policy entry point.
 
-The architecture above is the `0.1.0` tree. Version `0.2.0` adds the four deferred component directories, `examples/homepage/`, `check-links.mjs`, and `check-structure.mjs`.
+The architecture above is the `0.1.0` tree. Version `0.2.0` adds the four deferred component directories, `check-links.mjs`, and `check-structure.mjs`. It adds `examples/homepage/` only after the website gate in §12 is satisfied.
 
 ## 6. Technology and Package Contract
 
@@ -271,7 +273,7 @@ Any pair not listed in the admitted table is prohibited until `check-contrast.mj
 - Color never communicates meaning by itself.
 - Large teal or rust decorative fields are prohibited.
 
-These rules resolve the earlier over-assignment of teal to every interactive state. `00 – Strategic Foundation` is the higher authority: teal is a signal, not ambient brand color.
+These rules resolve the earlier over-assignment of teal to every interactive state. Diagnostic teal is a project-approved design-system decision recorded here; it is not made current merely by appearing in the historical Convergence foundation.
 
 ### Typography
 
@@ -465,25 +467,11 @@ Version `0.1.0` includes three evidence compositions built from Card, typography
 
 Severity is never communicated by color alone. Every composition must preserve its label and reading order when color, positioning, or the two-dimensional Priority Map layout is unavailable.
 
-### Canonical homepage
+### Homepage gate
 
-The homepage is deferred to `0.2.0` and is the only page composition in that release. It demonstrates:
+The homepage is deferred to `0.2.0` and cannot be designed or implemented until a current Ridgeframe website specification, sitemap, and content direction are approved. The earlier eleven-section Convergence outline is historical and does not define the Ridgeframe homepage.
 
-1. Homepage hero
-2. Problem framing
-3. Core promise
-4. Services overview
-5. Diagnosis-first process
-6. Why Ridgeframe
-7. Founder introduction
-8. Evidence
-9. Primary conversion section
-10. Contact composition
-11. Footer
-
-Evidence is the single most important homepage section. It must contain one Annotated Screen, one Findings Card, and one Priority Map excerpt using the `0.1.0` compositions.
-
-The page uses realistic Ridgeframe content and the core promise “Clarity on what to fix and fund.” It must work at mobile, tablet, desktop, and wide-desktop widths.
+When the upstream website specification is approved, the homepage becomes the only page composition in `0.2.0`. It must use realistic Ridgeframe content, follow the then-current section structure and evidence requirements, and work at mobile, tablet, desktop, and wide-desktop widths. The `0.1.0` evidence compositions remain available but are not mandatory homepage sections unless the approved website specification requires them.
 
 ## 13. Content Direction
 
@@ -525,7 +513,7 @@ Each script must:
 
 ### Continuous integration
 
-`.github/workflows/validate.yml` runs on pull requests and pushes to protected branches. In `0.1.0`, it installs locked dependencies and runs generation checks, unit tests, accessibility checks, the component-gallery production build, and contrast validation. Version `0.2.0` adds structural validation, link validation, and the homepage production build.
+`.github/workflows/validate.yml` runs on pull requests and pushes to protected branches. In `0.1.0`, it installs locked dependencies and runs generation checks, unit tests, accessibility checks, the component-gallery production build, and contrast validation. Version `0.2.0` adds structural and link validation; it adds the homepage production build only after the website gate is satisfied.
 
 CI failure blocks release readiness. The workflow does not publish packages or deploy a website.
 
@@ -545,13 +533,13 @@ Tests cover:
 - Link-validation pass and fail cases in `0.2.0`
 - Required repository structure and eight-export enforcement in `0.2.0`
 - A successful component-gallery production build in `0.1.0`
-- A successful homepage production build in `0.2.0`
+- A successful homepage production build in `0.2.0` when the website gate is satisfied
 
-The component gallery receives manual visual review at all four responsive ranges before `0.1.0`. The homepage receives the same review before `0.2.0`.
+The component gallery receives manual visual review at all four responsive ranges before `0.1.0`. The homepage receives the same review before it is included in `0.2.0`.
 
 ## 16. Release and Synchronization
 
-The initial release is `v0.1.0`; the deferred website primitives and homepage ship as `v0.2.0`. Every release requires:
+The initial release is `v0.1.0`; the deferred website primitives ship as `v0.2.0`, with the homepage included only after the website gate in §12 is satisfied. Every release requires:
 
 1. A clean verification run
 2. An updated `CHANGELOG.md`
@@ -562,7 +550,7 @@ The initial release is `v0.1.0`; the deferred website primitives and homepage sh
 
 Because `/design-sync` does not watch the repository, any token or component change requires an explicit sync before Claude Design is treated as current. The tagged-release sync is required even when the branch was synced during development.
 
-The `v0.1.0` changelog entry records the completed rename from “Convergence Strategies Group” to “Ridgeframe Strategies.” The two canonical upstream documents now use Ridgeframe Strategies. The former name remains historical context only and is not a second brand or component namespace.
+The `v0.1.0` changelog entry records Ridgeframe Strategies as the only current brand and identifies the Convergence files as historical references. The former name is provenance only and is not a second brand or component namespace.
 
 Consumers such as Claude Design, a future Figma generator, a deck builder, or a demo-site builder pin semantic tags instead of tracking `main`.
 
@@ -572,15 +560,17 @@ The repository does not currently contain approved logo binaries, icon geometry,
 
 The current approved design inputs available for implementation are:
 
-- `00 – Strategic Foundation`, including its higher-authority teal rules
-- `01 – Website Specification`, including its mandatory Evidence section
-- Ridgeframe's diagnosis-first positioning and website scope
+- The current Ridgeframe Strategies Strategic Foundation linked in §4
+- The current Ridgeframe Strategies Website Status linked in §4
+- Ridgeframe's diagnosis-first positioning and the design-system scope ratified in this specification
 - Architectural Editorial Modernism direction
 - Approved typography roles
 - Approved primitive color values
 - Figma's authority over logo geometry and optical identity decisions
 - Lucide as the interface icon system
 - WCAG 2.2 AA as the accessibility target
+
+There is no current approved Ridgeframe website specification, sitemap, or final website copy. That gap does not block `v0.1.0`; it blocks homepage composition and homepage-specific validation in `v0.2.0`.
 
 ## 18. Acceptance Criteria
 
@@ -593,23 +583,23 @@ The repository is ready for `v0.1.0` when:
 - `check-contrast.mjs` admits the verified pairs, rejects the four known failures, and rejects unverified pairs
 - The component gallery demonstrates all required states for the four shipped primitives
 - Findings Card, Annotated Screen, and Priority Map appear in the gallery with required severity text labels
-- The canonical homepage and the four website primitives do not ship in `0.1.0`
+- The homepage and the four website primitives do not ship in `0.1.0`
 - No speculative page templates or duplicate homepage artifacts exist
 - No unapproved logo geometry or custom interface icons are introduced
 - `generate-tokens.mjs`, `check-generated.mjs`, `check-contrast.mjs`, tests, the gallery build, and CI pass
 - Manual responsive, keyboard, accessibility, and visual review of the gallery is recorded
-- `CHANGELOG.md` documents the release and the Convergence-to-Ridgeframe name resolution
+- `CHANGELOG.md` documents Ridgeframe as current and the Convergence files as historical references
 - The release is tagged `v0.1.0`
 - `/design-sync` is rerun from the tagged checkout and a Claude Design landing-page smoke test is recorded
 
 The repository is ready for `v0.2.0` when:
 
 - FormControl, Disclosure, Header, and Footer complete the eight-primitive contract
-- The canonical eleven-section homepage ships and treats Evidence as its most important section
-- The homepage includes one Findings Card, one Annotated Screen, and one Priority Map excerpt
+- A current Ridgeframe website specification, sitemap, and content direction are approved and recorded in §4 before homepage work begins
+- The homepage, when included, implements the approved Ridgeframe structure and content direction
 - The sticky Header passes focus-not-obscured keyboard review
-- `check-links.mjs`, `check-structure.mjs`, and the homepage build pass in CI
-- Manual responsive, keyboard, accessibility, and visual review of the homepage is recorded
+- `check-links.mjs` and `check-structure.mjs` pass in CI; the homepage build also passes when the website gate is satisfied
+- Manual responsive, keyboard, accessibility, and visual review of the homepage is recorded when the homepage is included
 - The release is tagged and synchronized through `/design-sync`
 
 ## Revision Change Log
@@ -621,10 +611,10 @@ The repository is ready for `v0.2.0` when:
 | §§3, 8, 9, 12, 18 | Added severity tokens and the Findings Card, Annotated Screen, and Priority Map compositions without increasing the primitive count; narrowed the audit-UI exclusion | 3 |
 | §§8, 9, 10, 18 | Added WCAG 2.2 focus-obscuration, target-size, dragging, consistent-help, redundant-entry, and authentication requirements, including sticky Header handling | 4 |
 | §§5, 6 and ADR-0001 | Recorded the framework-neutral starting point, the non-requirement of React for ingestion, the validation rationale, and the maintenance cost | 5 |
-| §§2, 16, 17, 18 | Added the Claude Code version floor, non-watching sync behavior, release resynchronization, and Convergence-to-Ridgeframe name resolution | 6 |
+| §§2, 16, 17, 18 | Added the Claude Code version floor, non-watching sync behavior, release resynchronization, and Ridgeframe/Convergence authority boundary | 6 |
 | §§1, 3, 5, 9, 12, 14, 15, 16, 18 | Split delivery into four-primitives-plus-evidence `0.1.0` and website-oriented `0.2.0`; adjusted architecture, automation, tests, and acceptance criteria | 7 |
 | §§5, 6, 7 | Defined `docs/superpowers/specs/`, set the EB Garamond minimum to 18px, justified the three typeface names, excluded Jost from the font bundle, and marked packaging as forward-looking | Additional |
 
-## Open Questions
+## Implementation Gate
 
-1. **Upstream document locations — Erik:** Record the canonical paths or URLs and approved versions of `00 – Strategic Foundation` and `01 – Website Specification` before implementation begins.
+There are no unresolved decisions blocking `v0.1.0`. Homepage work remains blocked until a current Ridgeframe website specification, sitemap, and content direction are approved and linked in §4.
