@@ -328,6 +328,8 @@ Required aliases include:
 
 Severity tokens map to the firm's Critical, High, and Medium audit tiers. Every severity indicator includes its text label; color is supplementary and never the sole encoding.
 
+**Decision status:** Approved by Erik on 2026-07-28.
+
 ### Scales
 
 - Spacing uses a four-pixel base and a restrained named scale.
@@ -623,7 +625,6 @@ The repository is ready for `v0.2.0` when:
 
 ## Open Questions
 
-1. **Severity mapping ratification — Erik, with Chris:** Confirm that Critical → rust, High → teal, and Medium → slate matches the firm's audit framework and client-facing artifacts. If not, select only from verified pairs or require a computed and verified replacement before ratification.
-2. **Accessibility standard reconciliation — Erik and Chris:** Decide whether the audit framework and client-facing materials will be updated from WCAG 2.1 AA to WCAG 2.2 AA. Complete the cross-material update before client use.
-3. **Upstream document locations — Erik:** Record the canonical paths or URLs and approved versions of `00 – Strategic Foundation` and `01 – Website Specification` before implementation begins.
-4. **Release split ratification — Erik and Chris:** Approve `0.1.0` as tokens, four primitives, three evidence compositions, gallery, and CI, with the remaining website concerns deferred to `0.2.0`.
+1. **Accessibility standard reconciliation — Erik and Chris:** Decide whether the audit framework and client-facing materials will be updated from WCAG 2.1 AA to WCAG 2.2 AA. Complete the cross-material update before client use.
+2. **Upstream document locations — Erik:** Record the canonical paths or URLs and approved versions of `00 – Strategic Foundation` and `01 – Website Specification` before implementation begins.
+3. **Release split ratification — Erik and Chris:** Approve `0.1.0` as tokens, four primitives, three evidence compositions, gallery, and CI, with the remaining website concerns deferred to `0.2.0`.
