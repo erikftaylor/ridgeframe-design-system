@@ -77,7 +77,10 @@
   inline-size: var(--rf-type-size-ui);
 }
 
-.rf-button__label--loading,
+.rf-button__label--loading {
+  color: transparent;
+}
+
 .rf-button--loading .rf-button__icon {
   visibility: hidden;
 }
