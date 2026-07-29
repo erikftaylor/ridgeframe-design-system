@@ -12,20 +12,30 @@ export type AnnotatedScreenProps = {
   caption: string;
   surface?: CardProps['surface'];
   title: string;
+  titleLevel?: 3 | 4;
 };
 
-export function AnnotatedScreen({ annotations, caption, surface = 'default', title }: AnnotatedScreenProps) {
+export function AnnotatedScreen({
+  annotations,
+  caption,
+  surface = 'default',
+  title,
+  titleLevel = 3,
+}: AnnotatedScreenProps) {
   const captionId = useId();
+  const TitleHeading = titleLevel === 4 ? 'h4' : 'h3';
 
   return (
     <Card
       as="article"
       className="rf-annotated-screen"
+      data-gallery-composition="annotated-screen"
+      data-gallery-surface={surface}
       data-teal-signal={surface === 'subtle-emphasis' ? 'persistent' : undefined}
       padding="spacious"
       surface={surface}
     >
-      <h3>{title}</h3>
+      <TitleHeading>{title}</TitleHeading>
       <figure aria-labelledby={captionId}>
         <div aria-hidden="true" className="rf-annotated-screen__sample">
           <div className="rf-annotated-screen__sample-bar" />

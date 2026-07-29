@@ -71,6 +71,22 @@ describe('FindingsCard', () => {
     expect(container.querySelector('.rf-card--surface-inverse')).toBeInTheDocument();
     expect(screen.getByText('High', { selector: '.rf-findings-card__severity' })).toBeVisible();
   });
+
+  it('moves its title and evidence-step headings together when nested below a group heading', () => {
+    render(
+      <FindingsCard
+        {...finding}
+        severity="High"
+        title="Nested account review"
+        titleLevel={4}
+      />,
+    );
+
+    expect(screen.getByRole('heading', { level: 4, name: 'Nested account review' })).toBeVisible();
+    ['Problem', 'Evidence', 'Impact', 'Recommendation'].forEach((label) =>
+      expect(screen.getByRole('heading', { level: 5, name: label })).toBeVisible(),
+    );
+  });
 });
 
 describe('AnnotatedScreen', () => {
@@ -97,6 +113,19 @@ describe('AnnotatedScreen', () => {
       expect(explanations[index]).toHaveTextContent(annotation.detail);
     });
   });
+
+  it('supports a level-four title when nested below a composition group', () => {
+    render(
+      <AnnotatedScreen
+        annotations={annotations}
+        caption="Neutral account interface."
+        title="Nested annotation review"
+        titleLevel={4}
+      />,
+    );
+
+    expect(screen.getByRole('heading', { level: 4, name: 'Nested annotation review' })).toBeVisible();
+  });
 });
 
 describe('PriorityMap', () => {
@@ -112,6 +141,26 @@ describe('PriorityMap', () => {
       expect(rows[index]).toHaveTextContent(`Severity: ${priority.severity}`);
       expect(rows[index]).toHaveTextContent(`Effort: ${priority.effort}`);
     });
+  });
+
+  it('keeps duplicate-coordinate priorities in an always-visible linear representation', () => {
+    render(
+      <PriorityMap
+        items={[
+          { effort: 'Low', severity: 'Critical', title: 'Restore renewal confirmation' },
+          { effort: 'Low', severity: 'Critical', title: 'Repair confirmation messaging' },
+        ]}
+        title="Colliding priorities"
+        titleLevel={4}
+      />,
+    );
+
+    expect(screen.getByRole('heading', { level: 4, name: 'Colliding priorities' })).toBeVisible();
+    const fallback = screen.getByRole('list', { name: /linear priority reading order/i });
+    expect(fallback).toHaveAttribute('data-visual-fallback', 'always-visible');
+    expect(fallback).not.toHaveAttribute('aria-hidden');
+    expect(within(fallback).getByText('Restore renewal confirmation')).toBeVisible();
+    expect(within(fallback).getByText('Repair confirmation messaging')).toBeVisible();
   });
 });
 
@@ -167,6 +216,78 @@ describe('component gallery coverage', () => {
     expect(screen.getByText(/prefers-reduced-motion/i)).toBeVisible();
     expect(screen.getByRole('heading', { name: 'Admitted pairs', level: 3 })).toBeVisible();
     expect(screen.getByRole('heading', { name: 'Prohibited pairs', level: 3 })).toBeVisible();
+  });
+
+  it.each(['light', 'inverse'] as const)(
+    'shows every meaningful Button specimen on the %s surface',
+    (surface) => {
+      const { container } = render(<Gallery />);
+      const stateGroup = container.querySelector<HTMLElement>(
+        `[data-gallery-component="button"][data-gallery-surface="${surface}"]`,
+      );
+
+      expect(stateGroup).toBeInTheDocument();
+      expect(
+        [...stateGroup!.querySelectorAll<HTMLElement>('[data-gallery-state]')].map(
+          (specimen) => specimen.dataset.galleryState,
+        ),
+      ).toEqual([
+        'primary',
+        'secondary',
+        'tertiary',
+        'hover',
+        'focus-visible',
+        'active',
+        'loading',
+        'disabled',
+      ]);
+    },
+  );
+
+  it('shows explicit Link hover and active specimens', () => {
+    const { container } = render(<Gallery />);
+
+    expect(
+      container.querySelector('[data-gallery-component="link"][data-gallery-state="hover"]'),
+    ).toBeInTheDocument();
+    expect(
+      container.querySelector('[data-gallery-component="link"][data-gallery-state="active"]'),
+    ).toBeInTheDocument();
+  });
+
+  it.each([
+    ['findings-card', 'Findings Card'],
+    ['annotated-screen', 'Annotated Screen'],
+    ['priority-map', 'Priority Map'],
+  ] as const)(
+    'shows %s on every required surface beneath its group heading',
+    (composition, groupName) => {
+      const { container } = render(<Gallery />);
+      const groupHeading = screen.getByRole('heading', { level: 3, name: groupName });
+      const group = groupHeading.closest('section');
+      const specimens = [
+        ...group!.querySelectorAll<HTMLElement>(`[data-gallery-composition="${composition}"]`),
+      ];
+
+      expect(specimens.map((specimen) => specimen.dataset.gallerySurface)).toEqual([
+        'default',
+        'subtle-emphasis',
+        'inverse',
+      ]);
+      specimens.forEach((specimen) =>
+        expect(within(specimen).getByRole('heading', { level: 4 })).toBeVisible(),
+      );
+      expect(group).toBeInTheDocument();
+      expect(container).toContainElement(groupHeading);
+    },
+  );
+
+  it('uses level-five evidence-step headings beneath nested Findings Card titles', () => {
+    render(<Gallery />);
+    const findingsGroup = screen.getByRole('heading', { level: 3, name: 'Findings Card' }).closest('section');
+
+    expect(within(findingsGroup!).getAllByRole('heading', { level: 4 })).toHaveLength(3);
+    expect(within(findingsGroup!).getAllByRole('heading', { level: 5 })).toHaveLength(12);
   });
 
   it('keeps each demonstrated section within the persistent teal-signal budget', () => {

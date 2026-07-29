@@ -15,6 +15,7 @@ export type PriorityMapProps = {
   items: readonly PriorityItem[];
   surface?: CardProps['surface'];
   title: string;
+  titleLevel?: 3 | 4;
 };
 
 const severityRank: Record<FindingSeverity, number> = {
@@ -29,18 +30,21 @@ const effortRank: Record<PriorityEffort, number> = {
   Low: 1,
 };
 
-export function PriorityMap({ items, surface = 'default', title }: PriorityMapProps) {
+export function PriorityMap({ items, surface = 'default', title, titleLevel = 3 }: PriorityMapProps) {
   const descriptionId = useId();
+  const TitleHeading = titleLevel === 4 ? 'h4' : 'h3';
 
   return (
     <Card
       as="article"
       className="rf-priority-map"
+      data-gallery-composition="priority-map"
+      data-gallery-surface={surface}
       data-teal-signal={surface === 'subtle-emphasis' ? 'persistent' : undefined}
       padding="spacious"
       surface={surface}
     >
-      <h3>{title}</h3>
+      <TitleHeading>{title}</TitleHeading>
       <p id={descriptionId}>Severity and effort are written for every item; placement is a secondary cue.</p>
       <div aria-describedby={descriptionId} aria-hidden="true" className="rf-priority-map__plot">
         <span className="rf-priority-map__axis rf-priority-map__axis--severity">Severity increases upward</span>
@@ -63,7 +67,11 @@ export function PriorityMap({ items, surface = 'default', title }: PriorityMapPr
           </div>
         ))}
       </div>
-      <ol aria-label="Linear priority reading order" className="rf-priority-map__linear">
+      <ol
+        aria-label="Linear priority reading order"
+        className="rf-priority-map__linear"
+        data-visual-fallback="always-visible"
+      >
         {items.map((item) => (
           <li key={item.title}>
             <strong>{item.title}</strong>

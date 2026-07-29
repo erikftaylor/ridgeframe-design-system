@@ -117,15 +117,29 @@ export function Gallery() {
 
         <SectionShell data-teal-budget="3" heading="Button">
           <p className="gallery-section-intro">Use Tab to focus; hover and press the enabled examples to review native states.</p>
-          <div className="gallery-state-grid">
-            <div><span>Primary</span><Button icon={<Search />}>Review evidence</Button></div>
-            <div><span>Secondary</span><Button icon={<ArrowRight />} iconPosition="trailing" variant="secondary">View details</Button></div>
-            <div><span>Tertiary</span><Button icon={<Check />} variant="tertiary">Mark reviewed</Button></div>
-            <div><span>Hover</span><Button className="gallery-force-button-hover" variant="secondary">Hover state</Button></div>
-            <div><span>Focus-visible</span><Button className="gallery-force-button-focus" variant="secondary">Focus state</Button></div>
-            <div><span>Active</span><Button className="gallery-force-button-active" variant="secondary">Pressed state</Button></div>
-            <div><span>Loading</span><Button loading>Loading state</Button></div>
-            <div><span>Disabled</span><Button disabled>Disabled state</Button></div>
+          <div className="gallery-button-surfaces">
+            {(['light', 'inverse'] as const).map((surface) => (
+              <Card
+                className={`gallery-button-surface gallery-button-surface--${surface}`}
+                data-gallery-component="button"
+                data-gallery-surface={surface}
+                key={surface}
+                padding="spacious"
+                surface={surface === 'inverse' ? 'inverse' : 'default'}
+              >
+                <h3>{surface === 'light' ? 'Light' : 'Inverse'} surface</h3>
+                <div className="gallery-state-grid">
+                  <div data-gallery-state="primary"><span>Primary</span><Button icon={<Search />}>Review evidence</Button></div>
+                  <div data-gallery-state="secondary"><span>Secondary</span><Button icon={<ArrowRight />} iconPosition="trailing" variant="secondary">View details</Button></div>
+                  <div data-gallery-state="tertiary"><span>Tertiary</span><Button icon={<Check />} variant="tertiary">Mark reviewed</Button></div>
+                  <div data-gallery-state="hover"><span>Hover</span><Button className="gallery-force-button-hover" variant="secondary">Hover state</Button></div>
+                  <div data-gallery-state="focus-visible"><span>Focus-visible</span><Button className="gallery-force-button-focus" variant="secondary">Focus state</Button></div>
+                  <div data-gallery-state="active"><span>Active</span><Button className="gallery-force-button-active" variant="secondary">Pressed state</Button></div>
+                  <div data-gallery-state="loading"><span>Loading</span><Button loading>Loading state</Button></div>
+                  <div data-gallery-state="disabled"><span>Disabled</span><Button disabled>Disabled state</Button></div>
+                </div>
+              </Card>
+            ))}
           </div>
         </SectionShell>
 
@@ -139,6 +153,8 @@ export function Gallery() {
               <Link href="#keyboard-motion" variant="inverse">Inverse surface link</Link>
             </Card>
             <p><Link className="gallery-force-link-focus" href="#link-focus">Forced focus-visible review</Link></p>
+            <p data-gallery-component="link" data-gallery-state="hover"><span className="gallery-utility">Hover</span><Link className="gallery-force-link-hover" href="#link-hover">Forced hover review</Link></p>
+            <p data-gallery-component="link" data-gallery-state="active"><span className="gallery-utility">Active</span><Link className="gallery-force-link-active" href="#link-active">Forced active review</Link></p>
           </div>
         </SectionShell>
 
@@ -174,7 +190,7 @@ export function Gallery() {
             <h3 id="findings-heading">Findings Card</h3>
             <div className="gallery-composition-grid">
               {findingSurfaces.map((item) => (
-                <FindingsCard {...evidence} key={item.surface} severity={item.severity} surface={item.surface} title={item.title} />
+                <FindingsCard {...evidence} key={item.surface} severity={item.severity} surface={item.surface} title={item.title} titleLevel={4} />
               ))}
             </div>
           </section>
@@ -189,6 +205,7 @@ export function Gallery() {
                   key={surface}
                   surface={surface}
                   title={`${surface === 'subtle-emphasis' ? 'Subtle' : surface[0].toUpperCase() + surface.slice(1)} surface`}
+                  titleLevel={4}
                 />
               ))}
             </div>
@@ -198,7 +215,7 @@ export function Gallery() {
             <h3 id="priority-heading">Priority Map</h3>
             <div className="gallery-composition-grid">
               {surfaces.map((surface) => (
-                <PriorityMap items={priorities} key={surface} surface={surface} title={`${surface === 'subtle-emphasis' ? 'Subtle' : surface[0].toUpperCase() + surface.slice(1)} surface`} />
+                <PriorityMap items={priorities} key={surface} surface={surface} title={`${surface === 'subtle-emphasis' ? 'Subtle' : surface[0].toUpperCase() + surface.slice(1)} surface`} titleLevel={4} />
               ))}
             </div>
           </section>
@@ -216,7 +233,7 @@ export function Gallery() {
             </Card>
             <Card surface="inverse">
               <h3>Reading order</h3>
-              <p>At mobile width, confirm annotations follow the sample and the Priority Map uses its explicit linear fallback.</p>
+              <p>At every width, confirm annotations follow the sample and the Priority Map keeps its explicit linear representation beside or below the plot.</p>
             </Card>
           </div>
         </SectionShell>
