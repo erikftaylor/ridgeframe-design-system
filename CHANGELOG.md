@@ -12,6 +12,11 @@ All notable changes to the Ridgeframe Design System are recorded here. Releases 
 - Mobile-first layout foundations, admitted-pair contrast enforcement, component and accessibility tests, and asset provenance records.
 - Human setup, validation, release-tagging, and explicit Claude Design `/design-sync` guidance.
 
+### Changed
+
+- Withdrew the "Architectural Editorial Modernism" visual-direction mandate and its aesthetic prohibitions; no visual direction is ratified while design-system exploration continues. The current palette, type stack, and effect tokens are documented as a provisional working set, not a brand commitment.
+- Relaxed direction-pinning tests to structural checks — exact palette hex values, the severity-to-color mapping, font-role face assignments, the radius ceiling, and the documentation palette list are no longer hard-coded, so candidate directions can be explored without test collisions. The token pipeline, generated-file checks, admitted-pair contrast enforcement, component scope, and accessibility requirements are unchanged and remain binding.
+
 ### Authority
 
 - Ridgeframe Strategies is the only current brand and component namespace.

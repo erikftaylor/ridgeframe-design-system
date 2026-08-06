@@ -72,14 +72,13 @@ describe('layout foundations', () => {
     expect(containers).toContain('padding-inline: var(--rf-space-semantic-page-gutter);');
   });
 
-  it('uses the approved readable EB Garamond body baseline', () => {
-    // Replacing either token would lower body readability or discard the editorial body-face contract.
+  it('keeps body copy on tokenized type at a readable baseline', () => {
+    // Body copy must stay bound to the editorial-role token and a readable minimum size.
     const typography = readLayout('typography.css');
 
     expect(typography).toMatch(/body\s*\{[\s\S]*font-family:\s*var\(--rf-font-family-editorial\)/);
     expect(typography).toMatch(/body\s*\{[\s\S]*font-size:\s*var\(--rf-type-size-body\)/);
-    expect(generatedTokens).toContain('--rf-font-family-editorial: "EB Garamond", serif;');
-    expect(generatedTokens).toMatch(/--rf-type-size-body:\s*(?:1[89]|[2-9]\d|[1-9]\d{2,})px;/);
+    expect(generatedTokens).toMatch(/--rf-type-size-body:\s*(?:1[6-9]|[2-9]\d|[1-9]\d{2,})px;/);
   });
 
   it('honors reduced-motion preferences with the reduced-duration token', () => {

@@ -50,18 +50,16 @@ describe('repository documentation contract', () => {
     }
     expect(designSystem).toMatch(/Convergence[\s\S]*historical only/i);
 
-    for (const [token, value] of [
-      ['brand/slate', '#1B3A52'],
-      ['brand/teal', '#0F6E56'],
-      ['brand/rust', '#854F0B'],
-      ['neutral/off-white', '#F9F8F7'],
-      ['neutral/light', '#BFBDB3'],
-      ['neutral/mid', '#6B6A64'],
-      ['neutral/charcoal', '#2C2C2A'],
-      ['accent/teal-100', '#9FE1CB'],
-    ] as const) {
-      expect(designSystem).toContain(`\`${token}\``);
-      expect(designSystem).toContain(`\`${value}\``);
+    const primitiveGroups = (JSON.parse(
+      readFileSync(resolve(root, 'tokens/source/colors.json'), 'utf8'),
+    ) as { color: { primitive: Record<string, Record<string, { $value: string }>> } })
+      .color.primitive;
+
+    for (const [group, members] of Object.entries(primitiveGroups)) {
+      for (const [name, { $value }] of Object.entries(members)) {
+        expect(designSystem).toContain(`\`${group}/${name}\``);
+        expect(designSystem).toContain(`\`${$value}\``);
+      }
     }
 
     for (const primitive of ['Button', 'Link', 'Card', 'SectionShell']) {

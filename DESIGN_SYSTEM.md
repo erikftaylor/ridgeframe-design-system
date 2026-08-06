@@ -22,9 +22,9 @@ The Convergence text files [00 - Strategic Foundation](https://drive.google.com/
 
 An asset is not approved merely because it exists. Its source and approval status must be recorded in `assets/README.md` and the appropriate manifest; absent identity artwork must never be synthesized, traced, normalized, or reinterpreted.
 
-## 3. Architectural Editorial Modernism
+## 3. Visual direction status
 
-Use Architectural Editorial Modernism: Swiss grid discipline, calm authority, contemporary editorial typography, monochrome restraint, architectural framing, and functional teal signals. Favor structure, hairline rules, precise spacing, and quiet evidence. Avoid literal newspaper styling, dark technical dashboards, soft lifestyle minimalism, generic SaaS polish, high-energy agency conventions, Colorado or mountain clichés, ornamental texture, gradients, glass, glow, and exaggerated rounding.
+No visual direction is ratified. The previously mandated "Architectural Editorial Modernism" direction is withdrawn while design-system exploration continues, and no aesthetic mandate or prohibition replaces it. Treat the palette, type stack, and effect tokens in this release as a provisional working set: they keep the token pipeline, components, gallery, and validation runnable, and they are not a brand commitment. Candidate directions may be explored without being blocked by this document; a direction becomes binding only when it is ratified and recorded through the §2 authorities. The accessibility requirements in §10 remain binding for every candidate direction.
 
 `v0.1.0` includes tokens, layout foundations, Button, Link, Card, SectionShell, three evidence compositions, and a state-complete gallery. FormControl, Disclosure, Header, Footer, link and structure checks, and any approved homepage composition are deferred to `v0.2.0`. Do not infer those deferred interfaces from this release.
 
@@ -32,9 +32,9 @@ Use Architectural Editorial Modernism: Swiss grid discipline, calm authority, co
 
 Use primitive tokens for raw values and semantic tokens for purpose. Do not introduce a color, type size, spacing value, radius, shadow, breakpoint, or z-index outside the token source when an existing token fits. Reference CSS through generated custom properties and TypeScript through the generated `tokens` export. Never edit generated output; change `tokens/source/*.json`, then run `npm run generate:tokens` and `npm run check:generated`.
 
-The eight approved Ridgeframe primitive colors are:
+The eight current primitive colors — a provisional working set while direction exploration continues — are:
 
-| Approved token | Value | Primary role |
+| Token | Value | Primary role |
 | --- | --- | --- |
 | `brand/slate` | `#1B3A52` | Structure, inverse surfaces, ordinary interaction |
 | `brand/teal` | `#0F6E56` | Findings and priority signals |
@@ -45,7 +45,7 @@ The eight approved Ridgeframe primitive colors are:
 | `neutral/charcoal` | `#2C2C2A` | Primary text and strong structure |
 | `accent/teal-100` | `#9FE1CB` | Subtle fills and the inverse focus halo |
 
-White is an added accessibility primitive for raised surfaces and inverse text; it is not a ninth approved brand color. Off-white, white, charcoal, and neutrals carry most of the interface. Slate or charcoal carries ordinary actions. Teal is limited to diagnostic emphasis, priority, and High severity; no viewport may contain more than three persistent teal signal elements. Rust must not compete with teal. Teal-100 is fill-only and never a divider or standalone edge. Large teal or rust decorative fields are prohibited.
+`neutral/white` (`#FFFFFF`) is an added accessibility primitive for raised surfaces and inverse text; it is not a ninth brand color. The role assignments in the table above are working guidance that keeps `v0.1.0` output consistent; they are not ratified brand rules and do not gate direction exploration.
 
 The table below is generated from the same in-memory token graph as `tokens/generated/tokens.css` and `tokens/generated/tokens.ts`. Preserve these exact guarded markers; the generator may replace only the content between them.
 
@@ -167,7 +167,7 @@ The table below is generated from the same in-memory token graph as `tokens/gene
 
 ## 5. Typography and icon rules
 
-Use Space Grotesk for display, headings, navigation, labels, buttons, and utilities. Use EB Garamond for body, lead, quotes, and editorial reading; body copy is at least `18px`. Jost is restricted to approved logotype geometry and is not a runtime UI or heading font. Lucide is the only interface icon system in `v0.1.0`; use a pinned `lucide-react` icon by name, never custom interface-icon geometry.
+The type stack is a provisional working set pending a ratified visual direction. In `v0.1.0` it uses Space Grotesk for display, headings, navigation, labels, buttons, and utilities, and EB Garamond for body, lead, quotes, and editorial reading; body copy currently sits at `18px` and must stay at a readable baseline of at least `16px`. Jost is reserved for approved logotype geometry and is not a runtime UI or heading font. Lucide is the only interface icon system in `v0.1.0`; use a pinned `lucide-react` icon by name, never custom interface-icon geometry.
 
 ## 6. Layout and responsive behavior
 
