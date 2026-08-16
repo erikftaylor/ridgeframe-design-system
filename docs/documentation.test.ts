@@ -113,10 +113,11 @@ describe('repository documentation contract', () => {
     expect(designSystem).toMatch(/automation supplements but does not replace manual keyboard, screen-reader, and visual review/i);
   });
 
-  it('keeps v0.1.0 unreleased and records the brand authority transition', () => {
+  it('records the dated v0.1.0 release and the brand authority transition', () => {
     const changelog = readRootDocument('CHANGELOG.md');
 
-    expect(changelog).toContain('## v0.1.0 — Unreleased');
+    expect(changelog).toMatch(/## v0\.1\.0 — \d{4}-\d{2}-\d{2}/);
+    expect(changelog).not.toContain('## v0.1.0 — Unreleased');
     expect(changelog).toMatch(/Ridgeframe Strategies[\s\S]*only current brand/i);
     expect(changelog).toMatch(/Convergence[\s\S]*historical references/i);
   });

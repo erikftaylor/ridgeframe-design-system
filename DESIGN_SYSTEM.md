@@ -1,6 +1,6 @@
 # Ridgeframe Design System
 
-**Release:** `v0.1.0` — Unreleased
+**Release:** `v0.1.0` — 2026-08-15
 
 This document is the single machine-facing Ridgeframe design-system entry point. It is deliberately self-contained: when repository ingestion is unavailable, supply this file alone. Repository `/design-sync` remains preferred because it also exposes implemented component behavior and validation.
 

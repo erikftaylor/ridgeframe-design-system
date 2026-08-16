@@ -1,6 +1,6 @@
 # Ridgeframe Design System
 
-Ridgeframe Strategies' code-first design system for Claude Design and future product work. The `v0.1.0` release is currently **Unreleased**: it contains generated design tokens, four React primitives, three evidence compositions, layout foundations, and the component gallery.
+Ridgeframe Strategies' code-first design system for Claude Design and future product work. The `v0.1.0` release is dated **2026-08-15**: it contains generated design tokens, four React primitives, three evidence compositions, layout foundations, and the component gallery.
 
 [`DESIGN_SYSTEM.md`](DESIGN_SYSTEM.md) is the one machine-facing system definition. It contains the complete brand, token, component, accessibility, content, authority, and scope rules. This README is for people operating the repository.
 

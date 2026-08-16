@@ -2,7 +2,7 @@
 
 All notable changes to the Ridgeframe Design System are recorded here. Releases use semantic version tags; the entry remains Unreleased until its verification run and pull-request review are complete.
 
-## v0.1.0 — Unreleased
+## v0.1.0 — 2026-08-15
 
 ### Added
 
